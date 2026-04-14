@@ -1,0 +1,18 @@
+<?php
+// Exemplo em PHP/Plates
+$this->layout('layout::default');
+?>
+
+<div class="error-container">
+    <h1>500 - Erro Interno do Servidor</h1>
+    <p>Desculpe, algo deu errado em nosso servidor.</p>
+    
+    <?php if (isset($this->development_mode) && $this->development_mode): ?>
+        <!-- Mostrar detalhes apenas em desenvolvimento -->
+        <div class="debug-info">
+            <h2>Detalhes:</h2>
+            <p><strong>Mensagem:</strong> <?= $this->e($this->message) ?></p>
+            <pre><?= $this->e($this->trace) ?></pre>
+        </div>
+    <?php endif; ?>
+</div>

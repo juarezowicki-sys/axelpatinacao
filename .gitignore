@@ -1,0 +1,37 @@
+# Configurações do Mezzio (dentro da pasta projeto)
+projeto/config/autoload/local.php
+projeto/config/autoload/*.local.php
+projeto/config/autoload/*.php.serv
+projeto/data/cache/*
+
+# Dependências
+projeto/vendor/
+projeto/node_modules/
+projeto/sessoes/
+
+# Logs do Servidor (HostGator)
+public_html/error_log
+public_html/index_servidor.php
+data/log/*
+data/cache/*
+
+
+
+# --- 2. FRONTEND (VITE/TAILWIND/JS) ---
+node_modules/
+dist/
+public/build/
+.eslintcache
+
+# --- 3. DEPLOY E FERRAMENTAS ---
+projeto/deploy.cjs
+projeto/deploy.log
+deploy.log
+leiame
+.env
+.env.*
+
+# --- 4. SISTEMA E IDE ---
+.vscode/
+.DS_Store
+Thumbs.db

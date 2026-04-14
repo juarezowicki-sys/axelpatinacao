@@ -1,0 +1,41 @@
+{
+  "name": "tailwindcss-skit",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build-css": "shx mkdir -p public/css && npx @tailwindcss/cli -i ./src/App/src/css/input.css -o ./public/css/output.css --minify",
+    "watch-tailwind": "npx @tailwindcss/cli -i ./src/App/src/css/input.css -o ./public/css/output.css --watch",
+    "deploy-css": "npm run build-css && cross-env FILE=public/css/output.css node deploy.cjs",
+    "deploy-index": "cross-env FILE=public_html/index.php node deploy.cjs",
+    "deploy-js": "cross-env FILE=public/js/main.js node deploy.cjs",
+    "deploy-logo": "cross-env FILE=public/img/logo.png node deploy.cjs",
+    "deploy-font": "cross-env FILE=public/fonts/minha-fonte.woff2 node deploy.cjs",
+    "deploy-handler": "cross-env FILE=src/App/src/Handler/GoogleAuthHandler.php node deploy.cjs",
+    "deploy-form": "cross-env FILE=src/App/src/Form/EditarAtletaForm.php node deploy.cjs",
+    "deploy-config-autoload": "cross-env FILE=config/autoload/global.php node deploy.cjs",
+    "deploy-config": "cross-env FILE=config/routes.php node deploy.cjs",
+    "deploy-phtml-app": "html-minifier-terser src/App/src/templates/app/chamada.phtml --collapse-whitespace --remove-comments --minify-css true -o src/App/src/templates/app/chamada.phtml && cross-env FILE=src/App/src/templates/app/chamada.phtml node deploy.cjs",
+    "deploy-phtml-layout": "html-minifier-terser src/App/src/templates/layout/home-usuario.phtml --collapse-whitespace --remove-comments --minify-css true -o src/App/src/templates/layout/home-usuario.phtml && cross-env FILE=src/App/src/templates/layout/home-usuario.phtml node deploy.cjs",
+    "upload": "node deploy.cjs",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.0",
+    "autoprefixer": "^10.4.24",
+    "cross-env": "^7.0.3",
+    "html-minifier-terser": "^7.2.0",
+    "postcss": "^8.5.6",
+    "shx": "^0.3.4",
+    "tailwindcss": "^4.2.0",
+    "vite": "^7.1.0"
+  },
+  "dependencies": {
+    "ftp-deploy": "^2.4.7"
+  },
+  "anotacoes": {
+    "o_comando_abaixo_assim_como_está_sem_especificação_de_arquivo_manda _todo_o_site_para_o_servidor": "",
+    "deploy-tudo": "npm run build-css && node deploy.cjs"
+  }
+}

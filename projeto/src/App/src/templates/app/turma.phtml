@@ -1,0 +1,110 @@
+<?php $this->layout('layout::home-usuario'); ?>
+
+
+<?php $form = $this->form; ?>
+<?php $form->prepare(); ?>
+
+<div class="max-w-170 m-auto px-2 bg-white shadow-md rounded-lg mt-4">
+
+   
+        <?php if ($this->message): ?>
+             <div class="min-w-full mt-0 mb-9">
+            <span class="text-[#ce0808]"><?= $this->escapeHtml($this->message) ?></span>
+            </div>
+        <?php endif; ?>
+    
+    <span class="w-full text-blue-600 text-2xl">Cadastrar nova turma</span>
+
+    <?= $this->form()->openTag($form) ?>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-5">
+
+        <datalist id="lista-nomes">
+            <?php foreach ($this->nomes as $nome): ?>
+                <option value="<?= $this->escapeHtml($nome) ?>">
+                <?php endforeach; ?>
+        </datalist>
+        <div class="col-span-4 md:col-span-2">
+            <?= $this->formLabel($form->get('nome')) ?> <br />
+            <?= $this->formElement($form->get('nome')) ?>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('nome')) ?></span>
+        </div>
+
+        <datalist id="lista-niveis">
+            <?php foreach ($this->niveis as $nivel): ?>
+                <option value="<?= $this->escapeHtml($nivel) ?>">
+                <?php endforeach; ?>
+        </datalist>
+        <div class="col-span-4 md:col-span-2">
+            <?= $this->formLabel($form->get('nivel')) ?> <br />
+            <?= $this->formElement($form->get('nivel')) ?>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('nivel')) ?></span>
+        </div>
+
+        <datalist id="lista-locais">
+            <?php foreach ($this->locais as $local): ?>
+                <option value="<?= $this->escapeHtml($local) ?>">
+                <?php endforeach; ?>
+        </datalist>
+        <div class="col-span-4 md:col-span-2">
+            <?= $this->formLabel($form->get('local')) ?> <br />
+            <?= $this->formElement($form->get('local')) ?>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('local')) ?></span>
+        </div>
+
+        <datalist id="lista-monitores">
+            <?php foreach ($this->monitores as $monitor): ?>
+                <option value="<?= $this->escapeHtml($monitor) ?>">
+                <?php endforeach; ?>
+        </datalist>
+        <div class="col-span-4 md:col-span-2">
+            <?= $this->formLabel($form->get('monitor')) ?> <br />
+            <?= $this->formElement($form->get('monitor')) ?>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('monitor')) ?></span>
+        </div>
+
+        <datalist id="lista-dias">
+            <?php foreach ($this->dias as $dia): ?>
+                <option value="<?= $this->escapeHtml($dia) ?>">
+                <?php endforeach; ?>
+        </datalist>
+        <div class="col-span-4 md:col-span-2">
+            <?= $this->formLabel($form->get('dia')) ?> <br />
+            <?= $this->formElement($form->get('dia')) ?>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('dia')) ?></span>
+        </div>
+
+        <datalist id="lista-inicios">
+            <?php foreach ($this->inicios as $inicio): ?>
+                <option value="<?= $this->escapeHtml($inicio) ?>">
+                <?php endforeach; ?>
+        </datalist>
+        <div class="col-span-4 md:col-span-2">
+            <?= $this->formLabel($form->get('inicio')) ?> <br />
+            <?= $this->formElement($form->get('inicio')) ?>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('inicio')) ?></span>
+        </div>
+
+        <datalist id="lista-terminos">
+            <?php foreach ($this->terminos as $termino): ?>
+                <option value="<?= $this->escapeHtml($termino) ?>">
+                <?php endforeach; ?>
+        </datalist>
+        <div class="col-span-4 md:col-span-2">
+            <?= $this->formLabel($form->get('termino')) ?> <br />
+            <?= $this->formElement($form->get('termino')) ?>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('termino')) ?></span>
+        </div>
+
+        <?= $this->form()->closeTag() ?>
+        <!-- Botão de Enviar -->
+        <div class="col-span-4 mb-6 pt-2">
+            <button type="submit" id="btnEnviar" class="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400 px-2">
+                <svg id="spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span id="textoBotao">Cadastrar</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<?php $this->layout('layout::home-usuario'); ?> <?php $this->headTitle('Atletas Cadastrados'); ?> <h1 class="text-2xl m-2 mt-5 text-blue-600">Atletas Cadastrados</h1> <?php if ($this->mensagensSucesso):
+                                                                                                                                                                            $this->message = $this->escapeHtml($mensagensSucesso); ?> <span class="scroll-mt-[5.1rem] sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-0 flex items-center"><span class="h-px flex-1 bg-blue-400"></span><h2 class="px-4 text-blue-700"><?= $this->escapeHtml($this->message) ?></h2><span class="h-px flex-1 bg-blue-400"></span> </span> <?php endif; ?> <?php if ($this->mensagensErro):
+                                $this->message = $this->escapeHtml($mensagensErro); ?> <span class="scroll-mt-[5.1rem] sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-0 flex items-center"><span class="h-px flex-1 bg-blue-400"></span><h2 class="px-4 text-blue-700"><?= $this->escapeHtml($this->message) ?></h2><span class="h-px flex-1 bg-blue-400"></span> </span> <?php endif; ?> <?php if (count($this->atletas) === 0): ?> <p class="text-gray-500 italic">Nenhum atleta encontrado para os critérios selecionados.</p> <?php else: ?> <div class="table-container w-full whitespace-nowrap py-5"><table class="custom-table whitespace-nowrap"><thead><tr> <?php if ($this->role !== 'monitor'): ?> <th>Ações</th> <?php endif; ?> <th>Nome</th><th>Patins</th><th>Turma1</th><th>Turma2</th><th>Turma3</th><th>Responsável</th><th>Nascimento</th><th>Cadastro</th></tr></thead><tbody> <?php foreach ($this->atletas as $atleta): ?> <tr> <?php if ($this->role !== 'monitor'): ?> <td><a href="<?= $this->url('atleta.editar', ['id' => $atleta['id']]) ?>" onclick="limparAvisos()" class="text-blue-600 hover:underline mr-3">Editar</a> <button onclick="abrirModal('<?= addslashes($atleta['nome']) ?>', '<?= $this->url('atleta.excluir', ['id' => $atleta['id']]) ?>')" class="text-red-500 cursor-pointer hover:underline">Excluir</button></td> <?php endif; ?> <td><?= $atleta['nome'] ?></td><td><?= $atleta['patins'] ?></td><td><?= $atleta['turma01'] ?></td><td><?= $atleta['turma02'] ?></td><td><?= $atleta['turma03'] ?></td><td><?= $atleta['titular'] ?></td><td> <?= strlen($atleta['nascimento']) === 8 ? substr($atleta['nascimento'], 0, 2) . '-' . substr($atleta['nascimento'], 2, 2) . '-' . substr($atleta['nascimento'], 4, 4) : $atleta['nascimento'] ?> </td> <?php $atleta['cadastro'] = date('d-m-Y', strtotime($atleta['cadastro'])); ?> <td><?= $atleta['cadastro'] ?></td></tr> <?php endforeach; ?> </tbody></table> <?php endif; ?> </div><div id="modalExcluir" class="hidden fixed inset-0 z-100 items-center justify-center bg-opacity-50 p-4"><div class="bg-white rounded-lg p-6 max-w-sm w-full shadow-xl transform transition-all"><h3 class="text-lg font-bold text-gray-900">Confirmar Exclusão</h3><p class="text-gray-600 mt-2">Tem certeza que deseja excluir o atleta <span id="nomeAtletaModal" class="text-red-400"></span>?</p><div class="flex justify-end gap-3 mt-6"><button onclick="fecharModal()" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition">Cancelar</button> <a id="linkConfirmarExclusao" href="#" class="px-4 py-2 bg-red-400 text-white rounded-md hover:bg-red-400 transition">Excluir</a></div></div></div><script>const modal = document.getElementById('modalExcluir');
+        const nomeSpan = document.getElementById('nomeAtletaModal');
+        const linkExcluir = document.getElementById('linkConfirmarExclusao');
+
+        function abrirModal(nome, url) {
+            nomeSpan.textContent = nome; // Define o nome do atleta na mensagem
+            linkExcluir.href = url; // Define o link real de exclusão no botão "Excluir"
+            modal.classList.remove('hidden'); // Mostra a modal
+        }
+
+        function fecharModal() {
+            modal.classList.add('hidden'); // Esconde a modal
+        }
+
+        // Opcional: Fecha ao clicar fora da modal branca
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) fecharModal();
+        });
+
+        function limparAvisos() {
+            var elements = document.getElementsByClassName('aviso');
+            Array.from(elements).forEach(function(element) {
+                element.classList.add('hidden');
+            });
+        }</script>

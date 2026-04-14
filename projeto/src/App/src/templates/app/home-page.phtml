@@ -1,0 +1,362 @@
+<?php $this->layout('layout::home-page'); ?>
+
+<body class="text-[#161616] text-justify hyphens-auto bg-gray-200 w-full overflow-x-hidden box-border no-underline p-[0.1vw_0] m-0 leading-inherit roboto pt-0">
+  <header class="fixed z-100 flex items-center min-w-full bg-gray-100">
+    <div class="flex items-center w-full max-w-[calc(100%-20px)] md:max-w-[calc(100%-60px)] bg-gray-100 z-160">
+      <div class="max-w-35 md:max-w-50 py-1"><a href="/"><img src="/img/logo_original.png" alt="exibe o logo da Axel Patinação" loading="lazy" class="h-auto"></a></div>
+      <div class="whitespace-nowrap w-full max-w-full items-center justify-end md:order-1">
+        <nav class="flex justify-end items-center bg-neutral-primary w-full max-w-full z-10 mt-0 inset-s-0">
+          <ul class="w-full gap-2 flex items-center justify-end">
+            <li class="hidden w-45 text-right"><a href="#Niveis-Turmas" class="link-com-tooltip text-[1rem] flex items-center" aria-label="Confira os níveis e turmas disponíveis"><span class="material-icons-regular mr-1 text-[24px] text-[#a15959]">sports_kabaddi </span>Níveis Turmas</a></li>
+            <li class="hidden md:block w-45 text-right"><a href="#grade" class="link-com-tooltip text-[1rem] flex items-center" aria-label="Conheça as nossas Aulas e Horários"><span class="material-icons-regular mr-1 text-[24px] text-[#a15959]">history_toggle_off </span>Aulas Horários</a></li>
+            <li class="hidden md:block w-26"><a href="#Planos-trimestrais-semestrais-e-anuais" class="link-com-tooltip text-[1rem] flex items-center" aria-label="Confira os Planos trimestrais, semestrais e anuais"><span class="material-icons-regular mr-1 text-[24px] text-[#a15959]">settings </span>Planos</a></li>
+            <li class="hidden md:block w-39"><a href="https://axelpatinacao.basedeclientes.com.br/login" target="_blank" rel="noopener noreferrer" class="link-com-tooltip text-[1rem] flex items-center gap-1" aria-label="Acesse seus comprovantes, dados, arquivos, contratos e comunicados - com facilidade em um só lugar"><span class="material-icons-regular text-[24px] text-[#a15959]">face</span> Portal do cliente</a></li>
+            <li class="block w-35"><a href="https://wa.me/5551993340678?text=Ol%C3%A1.+Estou+vindo+atrav%C3%A9s+do+site.+Voc%C3%AA+pode+me+ajudar%3F" target="_blank" rel="noopener noreferrer" aria-label="iniciar nosso WhatsApp" class="text-[1rem] gap-1 flex ml-auto"><img src="/img/whats.png" alt="exibe o logo do WhatsApp" loading="lazy" height="21px" width="23px" class="max-w-full"> WhatsApp</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="containerMenu" class="fixed top-4 md:top-5 right-1 md:right-1 pb-0 block"><label class="w-7 md:w-7.5 h-6 md:h-7.5 cursor-pointer flex flex-col items-center justify-center rounded-md bg-white shadow-md relative"><input id="botaoMenu" class="hidden peer" type="checkbox">
+          <div class="w-4 md:w-5 h-0.5 bg-black mb-1 transition-all duration-300 peer-checked:rotate-45 peer-checked:translate-y-1.5"></div>
+          <div class="w-4 md:w-5 h-0.5 bg-black mb-1 transition-all duration-300 peer-checked:opacity-0"></div>
+          <div class="w-4 md:w-5 h-0.5 bg-black transition-all duration-300 peer-checked:-rotate-45 peer-checked:-translate-y-1.5"></div>
+          <nav id="navmenu" class="absolute top-7 md:top-8 right-[-1] opacity-0 invisible translate-x-5 peer-checked:opacity-100 peer-checked:visible peer-checked:translate-x-0 transition-all duration-300 bg-white shadow-2xl w-80 rounded-lg p-2 border border-gray-100 text-md text-gray-700">
+            <ul class="flex flex-col"><a class="cursor-pointer" data-target="ulmenu" href="#Niveis-Turmas">
+                <li class="rounded-md hover:bg-gray-50 indent-0 min-w-100 flex float:left items-center md:hidden"><span class="material-icons-regular mr-1 text-[19px] text-[#a15959]">sports_kabaddi</span> Níveis Turmas</li>
+              </a><a class="cursor-pointer" data-target="ulmenu" href="#grade">
+                <li class="rounded-md hover:bg-gray-50 indent-0 min-w-100 flex float:left items-center"><span class="material-icons-regular mr-1 text-[19px] text-[#a15959]">history_toggle_off</span> Aulas Horários</li>
+              </a><a class="cursor-pointer" data-target="ulmenu" href="#Planos-trimestrais-semestrais-e-anuais">
+                <li class="rounded-md hover:bg-gray-50 indent-0 min-w-100 flex float:left items-center"><span class="material-icons-regular mr-1 text-[19px] text-[#a15959]">settings</span> Planos</li>
+              </a><a class="cursor-pointer" data-target="ulmenu" href="#equipe">
+                <li class="rounded-md hover:bg-gray-50 indent-0 min-w-100 flex float:left items-center"><span class="material-icons-regular mr-1 text-[19px] text-[#a15959]">workspace_premium</span> Equipe Competição</li>
+              </a><a class="cursor-pointer" data-target="ulmenu" href="https://axelpatinacao.basedeclientes.com.br/login">
+                <li class="rounded-md hover:bg-gray-50 indent-0 min-w-100 flex float:left items-center"><span class="material-icons-regular mr-1 text-[19px] text-[#a15959]">face</span> Portal do cliente</li>
+              </a><a class="cursor-pointer" data-target="ulmenu" href="#escola-dedicada-a-formacao-esportiva-artistica-e-humana-por-meio-da-patinacao">
+                <li class="rounded-md hover:bg-gray-50 indent-0 min-w-100 flex float:left items-center"><span class="material-icons-regular mr-1 text-[19px] text-[#a15959]">home</span> início</li>
+              </a></ul>
+          </nav>
+        </label></div>
+    </div>
+  </header>
+  <main>
+    <div id="escola-dedicada-a-formacao-esportiva-artistica-e-humana-por-meio-da-patinacao" class="scroll-mt-60 md:scroll-mt-22 w-full h-14 md:h-18"><br><br><br></div>
+    <div class="minha-div bg-hero mt-0 md:mt-2"></div>
+    <div class="mt-2.5 mb-2.5 mx-auto w-[calc(95%-40px)] text-center">
+      <p class="italic hyphens-none leading-[1.03] text-[clamp(1rem,3vw,1.4rem)]">A Axel Patinação Artística é uma escola dedicada à formação esportiva, artística e humana por meio da patinação</p>
+    </div>
+    <section class="leading-[1.4] indent-3 bg-gray-100">
+      <div>
+        <p>Desde a sua criação, a Axel tem como missão promover o desenvolvimento técnico e emocional de seus alunos, unindo disciplina, sensibilidade e espírito de equipe em cada aula e apresentação. Mais do que ensinar a patinar, acreditamos no poder transformador do esporte como ferramenta de inclusão e crescimento pessoal.</p>
+      </div>
+      <div>
+        <p>Por isso, a Axel também atua em projetos sociais, oferecendo acesso gratuito à prática da patinação para crianças e adolescentes em situação de vulnerabilidade, incentivando a superação e a construção de novos caminhos através do movimento e da arte.</p>
+      </div>
+      <div>
+        <p>Nossos valores estão baseados no respeito, na empatia, na cooperação e na busca constante pela excelência. Cada aluno é visto como parte essencial de uma grande equipe, onde o aprendizado vai além da técnica, forma caráter, fortalece vínculos e inspira sonhos. Na Axel, acreditamos que o verdadeiro brilho está em cada conquista compartilhada e no amor pelo que se faz.<br><br></p>
+      </div>
+      <div class="btn-container indent-0"><a href="https://wa.me/5551993340678?text=Ol%C3%A1.+Estou+vindo+atrav%C3%A9s+do+site+e+desejo+agendar+uma+aula+experimental.+Voc%C3%AA+pode+me+ajudar%3F" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="iniciar nosso WhatsApp"><span class="btn text-sm">Agende uma aula experimental</span></a></div>
+    </section>
+    <div class="gridb">
+      <div><span id="Niveis-Turmas" class="scroll-mt-19 md:scroll-mt-25 flex items-center mt-9 mx-12 text-[clamp(1.31rem,3vw,1.7rem)]"><span class="h-px flex-1 bg-gray-400"></span>
+          <h2 class="shrink-0 px-4 text-gray-900">Níveis - Turmas</h2><span class="h-px flex-1 bg-gray-400"></span>
+        </span>
+        <section class="bg-gray-200">
+          <div>
+            <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between rounded-lg border border-gray-200 bg-white px-2 font-medium text-gray-900 hover:bg-gray-50 mb-1">
+                <h3>Iniciante</h3><span class="material-icons-regular shrink-0 transition-transform duration-300 group-open:-rotate-180 text-[31px] text-inherit">keyboard_arrow_down</span>
+              </summary>
+              <div class="p-4 bg-gray-100 indent-5">
+                <p>Perfeita para quem está começando a descobrir a magia da patinação.</p>
+                <p>As turmas são conduzidas de forma divertida e segura, trabalhando equilíbrio, coordenação e confiança. Cada aluno é incentivado a evoluir no seu próprio ritmo, celebrando cada nova conquista sobre as rodas.</p>
+              </div>
+            </details>
+            <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-gray-200 bg-white px-2 font-medium text-gray-900 hover:bg-gray-50 mb-1">
+                <h3>Intermediário<br>pré-equipe de competição</h3><span class="material-icons-regular shrink-0 transition-transform duration-300 group-open:-rotate-180 text-[31px] text-inherit">Keyboard_Arrow_Down</span>
+              </summary>
+              <div class="p-4 bg-gray-100 indent-5">
+                <p>Indicada para quem já domina os fundamentos da patinação e está pretendendo aperfeiçoar suas habilidades.</p>
+                <p>Nessa turma, os patinadores aprendem novos elementos técnicos e coreográficos, fortalecendo o desempenho e a expressão artística sobre os patins.</p>
+                <p>A partir daqui, também são introduzidas novas modalidades da patinação artística.</p>
+                <p>A participação em competições e apresentações é sempre opcional.</p>
+              </div>
+            </details>
+            <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-gray-200 bg-white px-2 font-medium text-gray-900 hover:bg-gray-50">
+                <h3>Avançado<br>Equipe de competição</h3><span class="material-icons-regular shrink-0 transition-transform duration-300 group-open:-rotate-180 text-[31px] text-inherit">keyboard_arrow_down</span>
+              </summary>
+              <div class="bg-gray-100 indent-5">
+                <p>Aqui, o amor pela patinação se transforma em dedicação e superação. A equipe de competição representa a Axel em eventos e campeonatos, treinando com foco, disciplina e espírito de equipe. Mais do que resultados, valorizamos o comprometimento, a união e a paixão por evoluir juntos. Nossos atletas são incentivados a irem além das pistas, estudando os regulamentos, conhecendo o teórico e o prático. Nesta turma trabalhamos as modalidades de Solo Dance, Free Dance e Livre individual.</p>
+                <p>A participação em competições e apresentações é sempre opcional.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+      </div>
+      <div><span id="grade" class="scroll-mt-19 md:scroll-mt-25 flex items-center mt-9 mx-12 text-[clamp(1.31rem,3vw,1.7rem)]"><span class="h-px flex-1 bg-gray-400"></span>
+          <h2 class="shrink-0 px-4 text-gray-900">Grade de horários</h2><span class="h-px flex-1 bg-gray-400"></span>
+        </span>
+        <section class="bg-gray-200">
+          <div>
+            <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-gray-200 bg-white px-2 font-medium text-gray-900 hover:bg-gray-50 mb-1">
+                <h3>Canoas</h3><span class="material-icons-regular shrink-0 transition-transform duration-300 group-open:-rotate-180 text-[31px] text-inherit">Keyboard_Arrow_Down</span>
+              </summary>
+              <div class="p-4 bg-gray-100 indent-5">
+                <p>Em Canoas, nossas turmas acontecem no ginásio da Rua Júlio Pereira de Souza, 46, Estância Velha, onde contamos com turmas de iniciação nas quintas-feiras, às 19 horas, e sábados, às 15 horas.</p>
+                <p>Também, no mesmo local, temos turmas intermediárias (pré-equipe de competição) nas quintas-feiras às 18 horas e sábados às 14 horas.</p>
+                <p>Alí ainda contamos com uma turma da equipe avançada (equipe de competição) que acontece aos sábados às 10 horas da manhã.</p>
+              </div>
+            </details>
+            <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-gray-200 bg-white px-2 font-medium text-gray-900 hover:bg-gray-50">
+                <h3>Cachoeirinha</h3><span class="material-icons-regular shrink-0 transition-transform duration-300 group-open:-rotate-180 text-[31px] text-inherit">Keyboard_Arrow_Down</span>
+              </summary>
+              <div>
+                <p class="p-4 bg-gray-100 indent-5">Em Cachoeirinha, oferecemos turmas intermediárias e avançadas (pré-equipe e equipe de competição) às terças e quintas-feiras, das 20h30 às 22h30. Nossas turmas acontecem na Rua Pagé, 485, bairro Parque Brasília, Parada 55.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+      </div>
+    </div>
+    <section class="flex bg-gray-100 niveis-planos">
+      <div class="slider">
+        <div class="slide-track">
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+          <div class="slide w-full max-w-full h-auto"><img src="/img/favicon-38x38.webp" height="38" width="38" alt="mostra imagem de um patins" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+    <h1 id="Planos-trimestrais-semestrais-e-anuais" class="scroll-mt-16 md:scroll-mt-22 my-[clamp(15px,3vh,10px)] w-[70%] border-b-[0.1px] border-[#161616] border-solid mb-[clamp(23px,3vh,28px)] mx-auto pt-4 text-[clamp(1.4rem,3vw,1.9rem)] text-center hyphens-none">Planos trimestrais, semestrais e anuais</h1><span class="my-[clamp(5px,3vh,10px)] scroll-mt-21 md:scroll-mt-25 flex items-center mt-6 mx-12 text-[clamp(1.31rem,3vw,1.7rem)]"><span class="h-px flex-1 bg-gray-400"></span>
+      <h2 class="shrink-0 px-4 text-gray-900">Planos trimestrais</h2><span class="h-px flex-1 bg-gray-400"></span>
+    </span>
+    <div class="gridb">
+      <section id="planos" class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center">Plano trimestral - 1 hora semanal R$ 199,90 mensais</h3>
+          <div class="indent-5">
+            <p>Ideal para quem deseja aprender patinação de forma leve e divertida!</p>
+            <p>Neste plano, o aluno participa de 1 aula semanal de 1 hora, desenvolvendo equilíbrio, coordenação motora, postura e noções técnicas iniciais da patinação artística.</p>
+            <p>Durante o trimestre, os alunos evoluem passo a passo, com acompanhamento individualizado e atividades voltadas para o aprendizado progressivo, sempre em um ambiente seguro, acolhedor e motivador.</p>
+          </div>
+          <ul class="ml-0 w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 3 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 1x por semana (1h/aula)</li>
+            <li>♦️ Indicado para iniciantes e praticantes recreativos</li>
+            <li>♦️ Renovação: automática</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do trimestre, conforme disponibilidade e agendamento prévio.</li>
+          </ul>
+          <div class="btn-container rounded-md"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/f06711a9-7fa1-4d66-9102-bd072bfda3ed" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Trimestral - 1 hora semanal">Contratar</a></div>
+        </article>
+      </section>
+      <section class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center">Plano Trimestral 2 horas semanais R$ 258,90 mensais</h3>
+          <div class="indent-5">
+            <p>Ideal para quem quer evoluir mais rápido na patinação!</p>
+            <p>Com duas horas semanais de aula, os alunos têm mais tempo para aprimorar suas técnicas, ganhar confiança e desenvolver melhor o equilíbrio, força e coordenação.</p>
+            <p>Além do aprendizado técnico, as turmas também trabalham a expressão corporal, o trabalho em grupo e a disciplina, tudo de forma divertida e motivadora.</p>
+          </div>
+          <ul class="ml-2 mx-auto w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 3 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 2x por semana (1h/aula)</li>
+            <li>♦️ Indicado para iniciantes e praticantes recreativos</li>
+            <li>♦️ Renovação: automática</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do trimestre, conforme disponibilidade e agendamento prévio.</li>
+          </ul>
+          <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/6b3f1866-2d49-45d8-b5a8-663319024d6c" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Trimestral 2 horas semanais">Contratar</a></div>
+        </article>
+      </section>
+    </div><span class="my-[clamp(5px,3vh,10px)] scroll-mt-21 md:scroll-mt-25 flex items-center mt-6 mx-12 text-[clamp(1.31rem,3vw,1.7rem)]"><span class="h-px flex-1 bg-gray-400"></span>
+      <h2 class="shrink-0 px-4 text-gray-900">Planos Semestrais</h2><span class="h-px flex-1 bg-gray-400"></span>
+    </span>
+    <div class="gridb">
+      <section class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center">Plano Semestral 1 hora semanal R$ 178,90 mensais</h3>
+          <div class="indent-5">
+            <p>Perfeito para quem busca constância e comprometimento com o aprendizado na patinação artística!</p>
+            <p>Com uma hora semanal de aula, o aluno tem um acompanhamento contínuo, desenvolvendo técnica, equilíbrio, coordenação e confiança de forma progressiva ao longo de seis meses.</p>
+            <p>As turmas são planejadas para garantir evolução e prazer em cada etapa do processo, valorizando o ritmo individual de cada patinador.</p>
+          </div>
+          <ul class="ml-2 mx-auto w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 6 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 1h por semana</li>
+            <li>♦️ Indicado para alunos que desejam manter uma rotina estável de treinos e evoluir com foco e consistência</li>
+            <li>♦️ Renovação: automática</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do semestre, conforme disponibilidade e agendamento prévio</li>
+          </ul>
+          <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/40351063-75c0-4256-9802-cf2451f6cb39" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Semestral 1 hora semanal">Contratar</a></div>
+        </article>
+      </section>
+      <section class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center">Plano Semestral 2 horas semanais R$ 229,90 mensais</h3>
+          <div class="indent-5">
+            <p>A escolha ideal para quem quer acelerar o aprendizado e aprofundar as habilidades na patinação artística com uma fidelidade de média duração.</p>
+            <p>Com duas horas semanais de aula, o aluno tem mais tempo de prática, aprimorando técnica, resistência, coordenação e expressão corporal.</p>
+            <p>Esse plano garante um desenvolvimento consistente ao longo de seis meses, unindo evolução técnica e diversão em cada treino.</p>
+          </div>
+          <ul class="ml-2 mx-auto w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 6 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 2h por semana</li>
+            <li>♦️ Indicado para alunos que desejam intensificar o ritmo de treinos, conquistar resultados mais rápidos e participar de apresentações com maior preparo</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do semestre, conforme disponibilidade e agendamento prévio.</li>
+          </ul>
+          <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/200ed411-490d-4eff-8818-cf586fa94f0b" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Semestral 2 horas semanais">Contratar</a></div>
+        </article>
+      </section>
+    </div><span class="my-[clamp(5px,3vh,10px)] scroll-mt-21 md:scroll-mt-25 flex items-center mt-6 mx-12 text-[clamp(1.31rem,3vw,1.7rem)]"><span class="h-px flex-1 bg-gray-400"></span>
+      <h2 class="shrink-0 px-4 text-gray-900">Planos Anuais</h2><span class="h-px flex-1 bg-gray-400"></span>
+    </span>
+    <div class="gridb">
+      <section class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center">Plano Anual 1 hora semanal R$ 147,90 mensais</h3>
+          <div class="indent-5">
+            <p>Ideal para quem quer assumir um compromisso de longo prazo com a evolução na patinação artística!</p>
+            <p>Com uma hora semanal de aula, o aluno desenvolve técnica, equilíbrio, postura e confiança de forma gradual e consistente durante todo o ano.</p>
+            <p>Esse plano garante acompanhamento contínuo, permitindo que o patinador cresça passo a passo, participe de eventos, apresentações e competições* e aproveite ao máximo o aprendizado.</p>
+          </div>
+          <ul class="ml-2 mx-auto w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 12 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 1h por semana</li>
+            <li>♦️ Indicado para alunos que desejam estabilidade nos treinos e crescimento técnico e artístico a longo prazo</li>
+            <li>♦️ Renovação: automática</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do semestre, conforme disponibilidade e agendamento prévio</li>
+            <li>* Para participar de apresentações e competições, o aluno deve receber a carta de convite da Técnica, assim que a mesma entender que o atleta está preparado.</li>
+          </ul>
+          <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/289288af-1bb4-4192-93a3-a7475929e845" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Anual 1 hora semanal">Contratar</a></div>
+        </article>
+      </section>
+      <section class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center">Plano Anual 2 horas semanais R$ 198,90 mensais</h3>
+          <div class="indent-5">
+            <p>Perfeito para quem busca dedicação e evolução completa na patinação artística!</p>
+            <p>Com duas horas semanais de aula, o aluno tem mais tempo de prática e aperfeiçoamento, fortalecendo técnica , equilíbrio, resistência e expressão corporal ao longo de todo o ano.</p>
+            <p>Esse plano oferece uma trajetória contínua de crescimento, com treinos planejados para o desenvolvimento técnico e artístico, além de preparo para apresentações e competições.</p>
+          </div>
+          <ul class="ml-2 mx-auto w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 12 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 2h por semana</li>
+            <li>♦️ Indicado para alunos que desejam estabilidade nos treinos e sólido crescimento técnico e artístico, a longo prazo</li>
+            <li>♦️ Renovação: automática</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do semestre, conforme disponibilidade e agendamento prévio</li>
+            <li>* Para participar de apresentações e competições, o aluno deve receber a carta de convite da Técnica, assim que a mesma entender que o atleta está preparado.</li>
+          </ul>
+          <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/38890ac2-e356-4102-9f45-25df3155104a" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Anual  2 horas semanais">Contratar</a></div>
+        </article>
+      </section>
+    </div>
+    <h2 id="equipe" class="scroll-mt-16 md:scroll-mt-22 my-[clamp(5px,3vh,10px)] w-[50%] border-b-[0.1px] border-[#161616] border-solid mb-[clamp(10px,3vh,15px)] mx-auto pt-4 pb-0 text-[clamp(1.15rem,3vw,1.7rem)] text-center">Equipe e Pré-equipe de competição</h2>
+    <div class="gridb">
+      <section class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center">Pré-Equipe 3 horas semanais R$ 253,90 mensais</h3>
+          <div class="indent-5">
+            <p>Desenvolvido especialmente para atletas que já passaram pela base, e que desejam aperfeiçoar sua técnica e ingressar ou se consolidar na equipe de competição, este plano oferece 3 horas semanais de treinamento intensivo.</p>
+            <p>As turmas combinam treinos técnicos, coreográficos e físicos, promovendo evolução constante em equilíbrio, força, flexibilidade e expressão artística.</p>
+            <p>O foco é preparar o atleta para participar de apresentações e campeonatos, representando a escola com excelência e espírito esportivo.</p>
+          </div>
+          <ul class="ml-2 mx-auto w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 12 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 3h por semana</li>
+            <li>♦️ Indicado para atletas da pré-equipe de competição que estão em fase de transição para o alto rendimento ou que buscam aperfeiçoar suas habilidades técnicas e artísticas</li>
+            <li>♦️ Renovação: automática</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do semestre, conforme disponibilidade e agendamento prévio</li>
+            <li>* Para participar de apresentações e competições, o aluno deve receber a carta de convite da Técnica, assim que a mesma entender que o atleta está preparado.</li>
+          </ul>
+          <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/f66abb5c-0597-4d13-a024-69a301d46384" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Pré-equipe 3 horas semanais">Contratar</a></div>
+        </article>
+      </section>
+      <section class="bg-gray-100">
+        <article>
+          <h3 class="my-[clamp(5px,3vh,10px)] w-auto mb-[clamp(1px,3vh,1px)] mx-auto pt-[0.2rem] pb-2 text-[clamp(1rem,3vW,1.3rem)] text-center"><span class="text-xl">Equipe de Competição<span><br>4 horas semanais R$ 289,90 mensais<br>6 horas semanais R$ 319,90 mensais</span></span></h3>
+          <div class="indent-5">
+            <p>Destinado aos atletas que fazem parte da equipe de competição, este plano é voltado à formação técnica, artística e esportiva de alto desempenho.</p>
+            <p>Com carga horária entre 4h e 8h semanais, os treinos são planejados para o aperfeiçoamento completo — técnica individual, coreografias, expressividade, preparo físico e mental.</p>
+            <p>O foco é o desenvolvimento constante e disciplinado, preparando o atleta para competições regionais, estaduais e nacionais, além de apresentações e eventos representando a escola.</p>
+          </div>
+          <ul class="ml-2 mx-auto w-[calc(100%-5px)] py-3.75 pb-2.5 text-left italic font-sans text-[clamp(0.1rem,4vw,1.1rem)] text-gray-700">
+            <li>♦️ Duração: 12 meses</li>
+            <li>♦️ Matrícula: R$ 30,00/única</li>
+            <li>♦️ Frequência: 4 horas ou 6 horas (6 horas para fazer todas as modalidades)</li>
+            <li>♦️ Indicado para atletas da equipe de competição que desejam aprimorar performance, disciplina e rendimento esportivo</li>
+            <li>♦️ Renovação: automática</li>
+            <li>♦️ Reposições de aula: em caso de ausência, o aluno pode repor a aula dentro do semestre, conforme disponibilidade e agendamento prévio</li>
+            <li>* Para participar de apresentações e competições, o aluno deve receber a carta de convite da Técnica, assim que a mesma entender que o atleta está preparado.</li>
+          </ul>
+          <div class="w-full text-md flex justify-center gap-6 mb-5">
+            <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/8846a479-26fd-49c2-b8cd-98c652ba0eca" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Equipe de Competição
+               de 4 horas semanais">Contratar 4 horas</a></div>
+            <div class="btn-container"><a href="https://axelpatinacao.basedeclientes.com.br/checkout/dfc4b3f2-ede2-42a2-8363-b9db9e2360a7" target="_blank" rel="noopener noreferrer" class="link-com-tooltip rounded-lg btn" aria-label="Contrate o Plano Equipe de Competição
+               de 6 horas semanais">Contratar 6 horas</a></div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+  <footerpage class="w-full grid mt-3 gap-2">
+    <div class="w-full mt-5 mb-5 mx-auto flex justify-center text-sm"><a href="https://wa.me/?text=Estou+te+enviando+o+URL+do+site+da+Axel+Patina%C3%A7%C3%A3o+da+prof.+Carina.+Confere+a%C3%AD%3A+https%3A%2F%2Faxelpatinacao.com.br%2F" target="_blank" rel="noopener noreferrer" class="flex link-com-tooltip rounded-lg text-sm" aria-label="Poste nosso URL no grupo ou compartilhe com um contato"><img src="/img/whats.png" alt="mostra o logo do WhatsApp" loading="lazy" height="24px" width="24px" class="max-w-full h-auto"> &nbsp;&nbsp;Compartilhe nosso site no grupo&nbsp;&nbsp; <img src="/img/compartilhar.png" alt="mostra a imagem Compartilhar" loading="lazy" height="24px" width="24px" class="max-w-full h-auto"></a></div>
+    <p class="w-full flex justify-center text-sm">Unidades em Canoas e Cachoeirinha<br>Instagram @apatinacaoartistica<br>📞 (51) 99334-0678</p>
+    <div class="w-full linhaDireitos flex justify-center mt-0"><a href="#" class="link-com-tooltip rounded-lg" aria-label="SiteLock" class="linhaDireitos" onclick="window.open('https://www.sitelock.com/verify.php?site=axelpatinacao.com.br','SiteLock','width=600,height=600,left=160,top=170');"><img class="SiteLock" alt="mostra o logo do SiteLock" src="https://shield.sitelock.com/shield/axelpatinacao.com.br" height="45px" width="75px" loading="lazy"></a></div>
+  </footerpage>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('containerMenu');
+      const checkbox = document.getElementById('botaoMenu');
+      let tempoParaFechar;
+      if (container && checkbox) {
+        // 1. Fechar ao sair do menu com o mouse
+        container.addEventListener('mouseleave', () => {
+          tempoParaFechar = setTimeout(() => {
+            checkbox.checked = false;
+          }, 80);
+        });
+        container.addEventListener('mouseenter', () => {
+          clearTimeout(tempoParaFechar);
+        });
+        // 2. Fechar ao clicar FORA do container
+        document.addEventListener('click', (e) => {
+          var link = e.target.closest('a');
+          if (link) {
+            checkbox.checked = false;
+          }
+          // Se o clique NÃO foi dentro do containerMenu, fecha o checkbox
+          if (!container.contains(e.target)) {
+            checkbox.checked = false;
+          }
+        });
+
+      }
+
+    });
+  </script>
+</body>

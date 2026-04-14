@@ -1,0 +1,134 @@
+<?php $this->layout('layout::home-usuario'); ?>
+
+
+<?php $form = $this->form; ?>
+<?php $form->prepare(); ?>
+
+<?= $this->form()->openTag($form) ?>
+<div class="max-w-170 p-6 bg-white shadow-md rounded-lg mx-auto">
+
+   <h1 class="text-2xl mb-4 text-blue-700">Seu cadastro na Axel</h1>
+   
+
+        <?php if ($this->message): ?>
+                <div class="mt-2 mb-6 text-[clamp(1rem,3vw,1.4rem)]">
+            <span class="text-[#b42b2b]"><?= $this->escapeHtml($this->message) ?></span>
+              </div>
+         <?php endif; ?>
+  
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('nome')) ?> </span> <br />
+            <?= $this->formElement($form->get('nome')) ?>
+            <p id="erro-nome" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ Informe o seu nome ou Razão social</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('nome')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('documento')) ?> </span> <br />
+            <?= $this->formElement($form->get('documento')) ?>
+            <p id="erro-documento" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ Este não é um número de CPF ou CNPJ</p>
+            <p id="erro-docVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe o seu CPF ou CNPJ</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('documento')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('telefone')) ?> </span> <br />
+            <?= $this->formElement($form->get('telefone')) ?>
+            <p id="erro-telefone" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ Este número não é de um Celular ou Telefone</p>
+            <p id="erro-foneVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe seu Celular ou telefone, com DDD</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('telefone')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('email')) ?> </span> <br />
+            <?= $this->formElement($form->get('email')) ?>
+            <p id="erro-emailVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe seu E-mail</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('email')) ?></span>
+        </div>
+
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('cep')) ?> </span> <br />
+            <?= $this->formElement($form->get('cep')) ?>
+            <p id="erro-CEP" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ Formato de CEP: 00000-000</p>
+            <p id="erro-cepVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe o seu CEP</p>
+            <p id="erro-cepNaoEnc" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ O CEP informado não foi encontrado</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('cep')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('uf')) ?> </span> <br />
+            <?= $this->formElement($form->get('uf')) ?>
+            <p id="erro-ufVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe a Sigla do seu Estado</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('uf')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('localidade')) ?> </span> <br />
+            <?= $this->formElement($form->get('localidade')) ?>
+            <p id="erro-localVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe a sua Cidade</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('localidade')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('bairro')) ?> </span> <br />
+            <?= $this->formElement($form->get('bairro')) ?>
+            <p id="erro-bairroVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe o seu Bairro</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('bairro')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('logradouro')) ?> </span> <br />
+            <?= $this->formElement($form->get('logradouro')) ?>
+            <p id="erro-logrVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe o seu Logradouro</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('logradouro')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('complementos')) ?> </span> <br />
+            <?= $this->formElement($form->get('complementos')) ?>
+            <p id="erro-complementos" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe os complementos do seu endereço</p>
+            <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('complementos')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('password')) ?><br />
+            <?= $this->formElement($form->get('password')) ?>
+            <p id="erro-password" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ A senha deve conter pelo menos 8 caracteres e no mínimo uma letra e um número</p>
+            <span class="text-[#ce0808]"><?= $this->formElementErrors($form->get('password')) ?></span>
+        </div>
+
+        <div class="md:col-span-2">
+            <span class="text-gray-600"><?= $this->formLabel($form->get('password_confirm')) ?><br />
+            <?= $this->formElement($form->get('password_confirm')) ?>
+            <p id="erro-confirm" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ Repita sua senha neste campo</p>
+            <span class="text-[#ce0808]"><?= $this->formElementErrors($form->get('password_confirm')) ?></span>
+        </div>
+   
+    <?= $this->form()->closeTag() ?>
+
+        <!-- Botão de Cancelar -->
+        <div class="md:col-span-2 mt-2">
+            <a href="javascript:history.go(-1)" class="w-full">
+                <div class="cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400">
+                    <span>Cancelar e voltar</span>
+                </div>
+            </a>
+        </div>
+
+    <!-- Botão de Enviar -->
+    <div class="md:col-span-2 mt-2">
+        <button type="submit" id="btnEnviar" class="cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white     rounded-md transition flex items-center justify-center disabled:bg-blue-400">
+            <svg id="spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span id="textoBotao">Finalizar Cadastro</span>
+        </button>
+    </div>
+ </div>
+</div>
+<script type="text/javascript" src="/js/usuario.js"></script>
