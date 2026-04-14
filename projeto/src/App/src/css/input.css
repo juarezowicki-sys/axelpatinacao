@@ -22,7 +22,7 @@
   }
 
   .custom-table td {
-    @apply pl-2 pt-1 text-lg;
+    @apply pl-4 pt-1 text-lg ;
   }
 
   .custom-table tbody tr {

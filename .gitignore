@@ -20,7 +20,7 @@ data/cache/*
 # --- 2. FRONTEND (VITE/TAILWIND/JS) ---
 node_modules/
 dist/
-public/build/
+public_html/build/
 .eslintcache
 
 # --- 3. DEPLOY E FERRAMENTAS ---
@@ -35,3 +35,5 @@ leiame
 .vscode/
 .DS_Store
 Thumbs.db
+
+*.code-workspace

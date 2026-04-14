@@ -27,7 +27,7 @@ class GoogleAuthHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        // 1. Recupera a sessão do Mezzio
+        // 1f Recupera a sessão do Mezzio
         $session = $request->getAttribute(SessionMiddleware::SESSION_ATTRIBUTE);
 
         if (!$session instanceof SessionInterface) {

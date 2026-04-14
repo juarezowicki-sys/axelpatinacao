@@ -32,55 +32,26 @@ class LoginHandler implements RequestHandlerInterface
 
         $error = null;
 
-        // Se já houver alguém logado,  limpa a $session 
-        //  if ($session->has(UserInterface::class)) {
-
-        //   $session->clear();
-        //  $error = "Neste dispositivo, já existe um usuário logado no nosso site, você pode clicar no link 'Logout' no menu,  e após isso executar seu login, se precisar.";
-        // 4. ENVIA O ERRO PARA A pag do usuario
-        //return new HtmlResponse($this->template->render('app::home-usuario', [
-        //'message' => $error
-        //]));
-        //  }  
-if ($request->getMethod() === 'POST') {
-    $params = $request->getParsedBody();
-    $password = trim($params['password'] ?? '');
-    $username = trim($params['username'] ?? '');
-
-    // Limpa a string para buscar apenas os números no campo de telefone
-    $telefoneLimpo = preg_replace('/\D/', '', $username);
-
-    $tableGateway = new TableGateway('usuarios', $this->adapter);
-/** @var \Laminas\Db\ResultSet\ResultSet $resultSet */
-    $resultSet = $tableGateway->select(function ($select) use ($username, $telefoneLimpo) {
-        $select->where->nest()
-            ->equalTo('email', $username) // Busca exata do e-mail
-            ->or
-            ->equalTo('telefone', $telefoneLimpo) // Busca exata do telefone (só números)
-            ->unnest();
-    });
-
-    $userData = $resultSet->current();
-    /*    if ($request->getMethod() === 'POST') {
+        if ($request->getMethod() === 'POST') {
             $params = $request->getParsedBody();
             $password = trim($params['password'] ?? '');
             $username = trim($params['username'] ?? '');
-            $foneDocum = preg_replace('/\D/', '', $username ?? '');
+
+            // Limpa a string para buscar apenas os números no campo de telefone
+            $telefoneLimpo = preg_replace('/\D/', '', $username);
 
             $tableGateway = new TableGateway('usuarios', $this->adapter);
             /** @var \Laminas\Db\ResultSet\ResultSet $resultSet */
-            // $resultSet = $tableGateway->select(['email' => $email]);
-   /*   $resultSet = $tableGateway->select(function ($select) use ($username, $foneDocum) {
+            $resultSet = $tableGateway->select(function ($select) use ($username, $telefoneLimpo) {
                 $select->where->nest()
-                    ->equalTo('email', $username)
+                    ->equalTo('email', $username) // Busca exata do e-mail
                     ->or
-                    ->equalTo('telefone', $foneDocum)
-                    ->or
-                    ->equalTo('documento', $username)
+                    ->equalTo('telefone', $telefoneLimpo) // Busca exata do telefone (só números)
                     ->unnest();
             });
+  
             $userData = $resultSet->current();
-*/
+
             if (! $userData) {
                 $error = 'Senha ou login incorretos';
             } else {

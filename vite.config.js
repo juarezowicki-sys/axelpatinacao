@@ -2,9 +2,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     build: {
-        outDir: './css/output.css',
+        outDir: './public_html/css/output.css',
         rollupOptions: {
-            input: './App/src/css/input.css',
+            input: './projeto/App/src/css/input.css',
         },
     },
 });
