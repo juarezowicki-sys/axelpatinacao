@@ -38,7 +38,6 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->route('/minha_senha', App\Handler\ForgotPasswordHandler::class, ['GET', 'POST'], 'forgot.password');
     $app->route('/alterar_a_minha_senha', App\Handler\ResetPasswordHandler::class, ['GET', 'POST'], 'reset.password');
 
-    //$app->get('/usuario', App\Handler\HomeUsuarioHandler::class, 'home.usuario');
     $app->route('/usuario[/{nome:.+}]', App\Handler\HomeUsuarioHandler::class, ['GET', 'POST'], 'home.usuario');
 
     $app->route('/editar_usuario/{id:\d+}', App\Handler\EditarUsuarioHandler::class, ['GET', 'POST'], 'usuario.editar');
@@ -56,11 +55,11 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
 
     $app->route('/editar_aula/{id:\d+}', App\Handler\EditarAulaHandler::class, ['GET', 'POST'], 'aula.editar');
     $app->get('/excluir_aula/{id:\d+}', App\Handler\ExcluirAulaHandler::class, 'aula.excluir');
+    $app->get('/aula/{id:\d+}', App\Handler\HomeAulaHandler::class, 'home.aula');
 
     $app->get('/usuarios', App\Handler\ListarUsuariosHandler::class, 'usuarios.listar');
     $app->get('/excluir_um_usuario/{id:\d+}', App\Handler\ExcluirUsuarioHandler::class, 'usuario.excluir');
 
     $app->route('/atletas[/{titular:.+}]', App\Handler\ListarAtletasHandler::class, ['GET', 'POST'], 'atletas.listar');
-    // $app->get('/atletas[/{nome:.+}]', App\Handler\ListarAtletasHandler::class, 'atletas.listar');
     $app->get('/excluir_um_atleta/{id:\d+}', App\Handler\ExcluirAtletaHandler::class, 'atleta.excluir');
 };

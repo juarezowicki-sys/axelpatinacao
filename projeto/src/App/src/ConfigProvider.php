@@ -48,6 +48,7 @@ class ConfigProvider
                 Handler\EditarUsuarioHandler::class => Handler\EditarUsuarioHandlerFactory::class,
                 Handler\ExcluirAtletaHandler::class => Handler\ExcluirAtletaHandlerFactory::class,
                 Handler\ExcluirAulaHandler::class => Handler\ExcluirAulaHandlerFactory::class,
+                Handler\HomeAulaHandler::class => Handler\HomeAulaHandlerFactory::class,
                 Handler\ExcluirTurmaHandler::class  => Handler\ExcluirTurmaHandlerFactory::class,
                 Handler\ExcluirUsuarioHandler::class => Handler\ExcluirUsuarioHandlerFactory::class,
                 // Handlers de Recuperação de Senha

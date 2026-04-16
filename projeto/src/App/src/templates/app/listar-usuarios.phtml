@@ -1,106 +1,18 @@
-<?php $this->layout('layout::home-usuario'); ?>
-
-<?php $this->headTitle('Usuarios Cadastrados'); ?>
-
-<h1 class="text-2xl m-4 text-blue-600">Usuários </h1>
-
-<?php if (isset($this->usuarios) && count($this->usuarios) === 0): ?>
-    <p class="text-gray-500 italic">Nenhum usuario cadastrado até o momento.</p>
-<?php else: ?>
-
-    <?php if ($this->mensagensSucesso):
+<?php $this->layout('layout::home-usuario'); ?> <?php $this->headTitle('Usuarios Cadastrados'); ?> <h1 class="text-2xl m-4 text-blue-600">Usuários</h1> <?php if (isset($this->usuarios) && count($this->usuarios) === 0): ?> <p class="text-gray-500 italic">Nenhum usuario cadastrado até o momento.</p> <?php else: ?> <?php if ($this->mensagensSucesso):
         $this->message = $this->escapeHtml($mensagensSucesso);
-    endif; ?>
-    <?php
-    if ($this->message): ?>
-        <span
-            class="aviso scroll-mt-[5.1rem] sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-0  flex items-center mt-6 mx-12">
-            <span class="h-px flex-1 bg-blue-400"></span>
-            <h2 class="shrink-0 px-4 text-blue-700"><?= $this->escapeHtml($this->message) ?></h2>
-            <span class="h-px flex-1 bg-blue-400"></span>
-        </span><br /><br />
-    <?php endif; ?>
-
-    <?php if ($this->mensagensErro):
+    endif; ?> <?php
+    if ($this->message): ?> <span class="aviso scroll-mt-[5.1rem] sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-0 flex items-center mt-6 mx-12"><span class="h-px flex-1 bg-blue-400"></span><h2 class="shrink-0 px-4 text-blue-700"><?= $this->escapeHtml($this->message) ?></h2><span class="h-px flex-1 bg-blue-400"></span></span><br><br> <?php endif; ?> <?php if ($this->mensagensErro):
         $this->messageErro = $this->escapeHtml($mensagensErro);
-    endif; ?>
-    <?php if ($this->messageErro): ?>
-        <span
-            class="aviso scroll-mt-[5.1rem] sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-0  flex items-center mt-6 mx-12">
-            <span class="h-px flex-1 bg-gray-400"></span>
-            <h2 class="shrink-0 px-4"><?= $this->escapeHtml($this->messageErro) ?></h2>
-            <span class="h-px flex-1 bg-gray-400"></span>
-        </span><br /><br />
-    <?php return;
-    endif; ?>
-
-    <div class="table-container">
-        <table class="custom-table whitespace-nowrap">
-            <thead>
-                <tr>
-                    <th>Ações</th>
-                    <th>Nome</th>
-                    <th>Nível</th>
-                    <th>Documento</th>
-                    <th>Telefone</th>
-                    <th>E-mail</th>
-                    <th>CEP</th>
-                    <th>UF</th>
-                    <th>Localidade</th>
-                    <th>Bairro</th>
-                    <th>Logradouro</th>
-                    <th>Complementos</th>
-                    <th>Cadastro</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($this->usuarios as $usuario): ?>
-                    <tr>
-                        <td>
-                            <a href="<?= $this->url('usuario.editar', ['id' => $usuario['id']]) ?>" onclick="limparAvisos()" class="text-blue-600 hover:underline ml-1">Editar</a>
-                            <?php $n = urlencode($usuario['nome']); ?>
-                            <a href="<?= $this->url('home.usuario', ['nome' => $n]) ?>" onclick="limparAvisos()" class="text-blue-600 hover:underline ml-1">Exibir</a>
-                            <?php if ($this->user_role === 'admin') { ?>
-                                <a href="<?= $this->url('usuario.excluir', ['id' => $usuario['id']]) ?>"
-                                    onclick="limparAvisos(); return confirm('Tem certeza que deseja excluir <?= $usuario['nome'] ?> ?')"
-                                    class="text-red-300 hover:underline ml-1">Excluir</a>
-                            <?php } ?>
-                        </td>
-                        <td><?= $usuario['nome'] ?></td>
-                        <td><?= $usuario['role'] ?></td>
-                        <td>
-                            <?= $usuario['documento'] = strlen($usuario['documento']) === 11
+    endif; ?> <?php if ($this->messageErro): ?> <span class="aviso scroll-mt-[5.1rem] sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-0 flex items-center mt-6 mx-12"><span class="h-px flex-1 bg-gray-400"></span><h2 class="shrink-0 px-4"><?= $this->escapeHtml($this->messageErro) ?></h2><span class="h-px flex-1 bg-gray-400"></span></span><br><br> <?php return;
+    endif; ?> <div class="table-container"><table class="custom-table whitespace-nowrap"><thead><tr><th>Ações</th><th>Nome</th><th>Nível</th><th>Documento</th><th>Telefone</th><th>E-mail</th><th>CEP</th><th>UF</th><th>Localidade</th><th>Bairro</th><th>Logradouro</th><th>Complementos</th><th>Cadastro</th></tr></thead><tbody> <?php foreach ($this->usuarios as $usuario): ?> <tr><td><a href="<?= $this->url('usuario.editar', ['id' => $usuario['id']]) ?>" onclick="limparAvisos()" class="text-blue-600 hover:underline ml-1">Editar</a> <?php $n = urlencode($usuario['nome']); ?> <a href="<?= $this->url('home.usuario', ['nome' => $n]) ?>" onclick="limparAvisos()" class="text-blue-600 hover:underline">Exibir</a> <?php if ($this->user_role === 'admin') { ?> <a href="<?= $this->url('usuario.excluir', ['id' => $usuario['id']]) ?>" onclick="limparAvisos(); return confirm('Tem certeza que deseja excluir <?= $usuario['nome'] ?> ?')" class="text-red-300 hover:underline ml-4">Excluir</a> <?php } ?> </td><td><?= $usuario['nome'] ?></td><td><?= $usuario['role'] ?></td><td> <?= $usuario['documento'] = strlen($usuario['documento']) === 11
                                 ? vsprintf('%s%s%s.%s%s%s.%s%s%s-%s%s', str_split($usuario['documento']))
                                 : vsprintf("%s%s.%s%s%s.%s%s%s/%s%s%s%s-%s%s", str_split($usuario['documento']));
-                            ?>
-                        </td>
-                        <td>
-                            <?= $usuario['telefone'] = strlen($usuario['telefone']) === 11
+                            ?> </td><td> <?= $usuario['telefone'] = strlen($usuario['telefone']) === 11
                                 ? vsprintf('(%s%s) %s%s%s%s%s-%s%s%s%s', str_split($usuario['telefone'])) // (11) 99999-9999
                                 : vsprintf('(%s%s) %s%s%s%s-%s%s%s%s', str_split($usuario['telefone']));  // (11) 9999-9999
-                            ?>
-                        </td>
-                        <td><?= $usuario['email'] ?></td>
-                        <td><?= $usuario['cep'] ?></td>
-                        <td><?= $usuario['uf'] ?></td>
-                        <td><?= $usuario['localidade'] ?></td>
-                        <td><?= $usuario['bairro'] ?></td>
-                        <td><?= $usuario['logradouro'] ?></td>
-                        <td><?= $usuario['complementos'] ?></td>
-                        <?php $usuario['data_cadastro'] = date('d-m-Y', strtotime($usuario['data_cadastro'])); ?>
-                        <td><?= $usuario['data_cadastro'] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php endif; ?>
-
-    </div>
-    <script>
-        function limparAvisos() {
+                            ?> </td><td><?= $usuario['email'] ?></td><td><?= $usuario['cep'] ?></td><td><?= $usuario['uf'] ?></td><td><?= $usuario['localidade'] ?></td><td><?= $usuario['bairro'] ?></td><td><?= $usuario['logradouro'] ?></td><td><?= $usuario['complementos'] ?></td> <?php $usuario['data_cadastro'] = date('d-m-Y', strtotime($usuario['data_cadastro'])); ?> <td><?= $usuario['data_cadastro'] ?></td></tr> <?php endforeach; ?> </tbody></table> <?php endif; ?> </div><script>function limparAvisos() {
             var elements = document.getElementsByClassName('aviso');
             Array.from(elements).forEach(function(element) {
                 element.classList.add('hidden');
             });
-        }
-    </script>
+        }</script>

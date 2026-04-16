@@ -25,6 +25,13 @@ final class EditarAulaHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $session = $request->getAttribute(\Mezzio\Session\SessionMiddleware::SESSION_ATTRIBUTE);
+        $userData = $session->get(\Mezzio\Authentication\UserInterface::class);
+        // Extrai o nome do usuario (detalhes) e o role (primeira posição do array)
+        $nomeLogado = $userData['details']['nome'] ?? null;
+        $roles = $userData['roles'] ?? [];
+        $role = $roles[0] ?? 'guest';
+
         $flashMessages = $request->getAttribute(FlashMessageMiddleware::FLASH_ATTRIBUTE);
         $idAula = (int) $request->getAttribute('id');
         $sql = new Sql($this->adapter);
@@ -35,7 +42,8 @@ final class EditarAulaHandler implements RequestHandlerInterface
         $aula = $statement->execute()->current();
 
         if (!$aula) {
-            return new HtmlResponse("<h1>Aula não encontrada!</h1>", 404);
+            $flashMessages->flash('erro', 'Aula não encontrada!');
+            return new \Laminas\Diactoros\Response\RedirectResponse($this->router->generateUri('aulas.listar'));
         }
 
         // 2. BUSCAR MONITORES
@@ -70,21 +78,6 @@ final class EditarAulaHandler implements RequestHandlerInterface
         // 1. Limpeza e Ordenação unificada dos Monitores
         $monitores = array_unique(array_filter($opcoesMonitores));
         sort($monitores);
-/*
-        // 3. BUSCAR ATLETAS DA AULA
-        // Primeiro, pegamos o nome da aula que acabamos de buscar
-        $nomeDaAulaAtual = $aula['nome'];
-
-        $selectAtletas = $sql->select('atletas');
-        $selectAtletas->where->nest()
-            ->equalTo('aula01', $nomeDaAulaAtual) // Agora busca pelo nome string
-            ->or
-            ->equalTo('aula02', $nomeDaAulaAtual)
-            ->unnest();
-
-        $statementAtletas = $sql->prepareStatementForSqlObject($selectAtletas);
-        $atletas = iterator_to_array($statementAtletas->execute());
-*/
 
         if ($request->getMethod() === 'POST') {
 
@@ -128,7 +121,12 @@ final class EditarAulaHandler implements RequestHandlerInterface
                 $flashMessages->flash('sucesso', 'a Aula foi editada com sucesso!');
                 return new \Laminas\Diactoros\Response\RedirectResponse($this->router->generateUri('aulas.listar'));
             } catch (\Exception $e) {
-                return new HtmlResponse("<h1>Erro ao editar a aula: " . $e->getMessage() . "</h1>");
+                if ($role === 'admin') {
+                    $flashMessages->flash('erro', 'Erro ao editar a aula: " . $e->getMessage() . "!');
+                } else {
+                    $flashMessages->flash('erro', 'Não foi possível editar a aula. Comunique o admin do site.');
+                }
+                return new \Laminas\Diactoros\Response\RedirectResponse($this->router->generateUri('aulas.listar'));
             }
         }
 

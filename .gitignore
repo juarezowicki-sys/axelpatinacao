@@ -11,11 +11,8 @@ projeto/sessoes/
 
 # Logs do Servidor (HostGator)
 public_html/error_log
-public_html/index_servidor.php
 data/log/*
 data/cache/*
-
-
 
 # --- 2. FRONTEND (VITE/TAILWIND/JS) ---
 node_modules/

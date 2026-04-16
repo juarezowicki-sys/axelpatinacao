@@ -4,19 +4,23 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+
     "build-css": "shx mkdir -p ../public_html/css && npx @tailwindcss/cli -i src/App/src/css/input.css -o ../public_html/css/output.css --minify",
+    
     "watch-tailwind": "npx @tailwindcss/cli -i src/App/src/css/input.css -o ../public_html/css/output.css --watch",
     "deploy-css": "npm run build-css && cross-env FILE=public_html/css/output.css node deploy.cjs",
     "deploy-index": "cross-env FILE=public_html/index.php node deploy.cjs",
     "deploy-js": "cross-env FILE=public_html/js/main.js node deploy.cjs",
     "deploy-logo": "cross-env FILE=public_html/img/logo.png node deploy.cjs",
     "deploy-font": "cross-env FILE=public_html/fonts/minha-fonte.woff2 node deploy.cjs",
-    "deploy-handler": "cross-env FILE=src/App/src/Handler/LoginHandler.php node deploy.cjs",
+  
+    "deploy-provider": "cross-env FILE=src/App/src/ConfigProvider.php node deploy.cjs",
+    "deploy-handler": "cross-env FILE=src/App/src/Handler/HomeAulaHandlerFactory.php node deploy.cjs",
     "deploy-form": "cross-env FILE=src/App/src/Form/EditarAtletaForm.php node deploy.cjs",
-    "deploy-config-autoload": "cross-env FILE=config/autoload/global.php node deploy.cjs",
+    "deploy-config-autoload": "cross-env FILE=config/autoload/authorization.local.php node deploy.cjs",
     "deploy-config": "cross-env FILE=config/routes.php node deploy.cjs",
-    "deploy-phtml-app": "html-minifier-terser src/App/src/templates/app/listar-aulas.phtml --collapse-whitespace --remove-comments --minify-css true -o src/App/src/templates/app/listar-aulas.phtml && cross-env FILE=src/App/src/templates/app/listar-aulas.phtml node deploy.cjs",
-    "deploy-phtml-layout": "html-minifier-terser src/App/src/templates/layout/home-page.phtml --collapse-whitespace --remove-comments --minify-css true -o src/App/src/templates/layout/home-page.phtml && cross-env FILE=src/App/src/templates/layout/home-page.phtml node deploy.cjs",
+    "deploy-phtml-app": "html-minifier-terser src/App/src/templates/app/home-aula.phtml --collapse-whitespace --remove-comments --minify-css true -o src/App/src/templates/app/home-aula.phtml && cross-env FILE=src/App/src/templates/app/home-aula.phtml node deploy.cjs",
+    "deploy-phtml-layout": "html-minifier-terser src/App/src/templates/layout/home-usuario.phtml --collapse-whitespace --remove-comments --minify-css true -o src/App/src/templates/layout/home-usuario.phtml && cross-env FILE=src/App/src/templates/layout/home-usuario.phtml node deploy.cjs",
     "upload": "node deploy.cjs",
     "dev": "vite",
     "build": "vite build"
