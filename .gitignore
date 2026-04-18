@@ -2,12 +2,17 @@
 projeto/config/autoload/local.php
 projeto/config/autoload/*.local.php
 projeto/config/autoload/*.php.serv
-projeto/data/cache/*
 
 # Dependências
 projeto/vendor/
-projeto/node_modules/
+node_modules/
 projeto/sessoes/
+projeto/data/cache/*
+phpcs.xml.dist
+phpunit.xml.dist
+psalm-baseline.xml
+psalm.xml.dist
+vite.config.js
 
 # Logs do Servidor (HostGator)
 public_html/error_log
@@ -15,15 +20,14 @@ data/log/*
 data/cache/*
 
 # --- 2. FRONTEND (VITE/TAILWIND/JS) ---
-node_modules/
 dist/
 public_html/build/
 .eslintcache
 
 # --- 3. DEPLOY E FERRAMENTAS ---
-projeto/deploy.cjs
-projeto/deploy.log
+deploy.cjs
 deploy.log
+package.json
 leiame
 .env
 .env.*
@@ -32,5 +36,4 @@ leiame
 .vscode/
 .DS_Store
 Thumbs.db
-
 *.code-workspace
