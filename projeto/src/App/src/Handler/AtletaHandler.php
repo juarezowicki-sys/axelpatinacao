@@ -33,7 +33,9 @@ final class AtletaHandler implements RequestHandlerInterface
 
         $roles = $userData['roles'] ?? [];
         $role = $roles[0] ?? 'guest';
-        if ($role === 'monitor') { return new RedirectResponse('/login'); }
+        if ($role === 'monitor') {
+            return new RedirectResponse('/login');
+        }
 
 
         $form = new AtletaForm('atleta', ['db_adapter' => $this->adapter]);
@@ -125,7 +127,6 @@ final class AtletaHandler implements RequestHandlerInterface
                     }
                     // 3. Inserir no banco
                     return new RedirectResponse($this->router->generateUri('atletas.listar'));
-
                 } catch (\Exception $e) {
                     // Caso ocorra algum erro (ex: e-mail duplicado ou coluna faltando)
                     return new \Laminas\Diactoros\Response\HtmlResponse("<h1>Erro ao salvar: " . $e->getMessage() . "</h1>");
@@ -134,21 +135,21 @@ final class AtletaHandler implements RequestHandlerInterface
                 $message = 'Corrija os erros em vermelho';
             }
         }
-  
-  if ($role[0] === 'admin' || $role[0] === 'monitor') {
-      
-        return new HtmlResponse($this->template->render('app::atleta', [
-            'form'    => $form,
-            'request' => $request,
-            'message' => $message,
-            'titulares' => $opcoesTitulares
-        ]));
-  } else {
+
+        if ($role[0] === 'admin' || $role[0] === 'monitor') {
+
             return new HtmlResponse($this->template->render('app::atleta', [
-            'form'    => $form,
-            'request' => $request,
-            'message' => $message
-        ]));
-  }
+                'form'    => $form,
+                'request' => $request,
+                'message' => $message,
+                'titulares' => $opcoesTitulares
+            ]));
+        } else {
+            return new HtmlResponse($this->template->render('app::atleta', [
+                'form'    => $form,
+                'request' => $request,
+                'message' => $message
+            ]));
+        }
     }
 }

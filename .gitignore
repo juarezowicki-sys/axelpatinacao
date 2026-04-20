@@ -7,17 +7,10 @@ projeto/config/autoload/*.php.serv
 projeto/vendor/
 node_modules/
 projeto/sessoes/
-projeto/data/cache/*
-phpcs.xml.dist
-phpunit.xml.dist
-psalm-baseline.xml
-psalm.xml.dist
-vite.config.js
+projeto/data/
 
 # Logs do Servidor (HostGator)
 public_html/error_log
-data/log/*
-data/cache/*
 
 # --- 2. FRONTEND (VITE/TAILWIND/JS) ---
 dist/
@@ -25,15 +18,17 @@ public_html/build/
 .eslintcache
 
 # --- 3. DEPLOY E FERRAMENTAS ---
+.gitignore
+*.code-workspace
 deploy.cjs
 deploy.log
-package.json
 leiame
+package.json
 .env
 .env.*
 
 # --- 4. SISTEMA E IDE ---
+.laminas-ci/
 .vscode/
 .DS_Store
 Thumbs.db
-*.code-workspace

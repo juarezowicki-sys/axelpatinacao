@@ -3,64 +3,74 @@
 <?php
 /** @var array $aula */
 /** @var iterable $monitores */
-/**  @var iterable $atletas */
-/**  @var string $datas */
+/** @var iterable $atletas */
+/** @var string $datas */
+// Fallback para evitar erro caso as variáveis não existam
+$lista_monitores = $monitores ?? $this->monitores ?? [];
 ?>
 
-<div class="container mx-auto p-3 bg-white shadow-lg rounded-lg mt-3">
-    <h1 class="text-xl text-blue-600 mb-6 border-b pb-2">
+<div class="mt-2 bg-white shadow-lg rounded-lg overflow-hidden">
+    <h1 class="text-xl text-blue-600 mb-2 border-b p-3">
         Editando a aula de <?= $this->escapeHtml($aula['data']); ?>
     </h1>
 
-    <form method="POST" class="space-y-6">
+    <form method="POST" class="p-3 space-y-6">
 
         <!-- CABEÇALHO DA AULA (Editável) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 bg-gray-50  rounded-md">
-            <div>
-                <label class="block text-sm text-gray-600">Nível</label>
-                <input type="text" name="nivel" value="<?= $this->escapeHtml($aula['nivel']) ?>" maxlength="20" readonly placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
+        <div class="flex flex-wrap bg-gray-50 rounded-md gap-3 p-2">
+            <div class="flex-1 min-w-25">
+                <label class="block text-gray-500 text-xs">
+                    Nível
+                </label>
+                <input type="text" name="nivel" value="<?= $this->escapeHtml($aula['nivel']) ?>" maxlength="20" readonly placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
             </div>
-            <div>
-                <label class="block text-sm text-gray-600">Local</label>
-                <input type="text" name="local" value="<?= $this->escapeHtml($aula['local']) ?>" maxlength="20" placeholder="cidade" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
+            <div class="flex-1 min-w-25">
+                <label class="block text-gray-500 text-xs">
+                    Local
+                </label>
+                <input type="text" name="local" value="<?= $this->escapeHtml($aula['local']) ?>" maxlength="20" placeholder="cidade" class="border border-gray-300 rounded-md px-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
             </div>
-            <div>
-                <label class="block text-sm text-gray-600">Dia</label>
-                <input type="text" name="dia" value="<?= $this->escapeHtml($aula['dia']) ?>" maxlength="20" placeholder="dia da semana" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
+            <div class="flex-1 min-w-25">
+                <label class="block text-gray-500 text-xs">
+                    Dia
+                </label>
+                <input type="text" name="dia" value="<?= $this->escapeHtml($aula['dia']) ?>" maxlength="20" placeholder="dia da semana" class="border border-gray-300 rounded-md px-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
             </div>
-            <div>
-                <label class="block text-sm text-gray-600">Início</label>
-                <input type="text" name="inicio" value="<?= $aula['inicio_formatado'] ?>" maxlength="7" placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
+            <div class="flex-1 min-w-25">
+                <label class="block text-gray-500 text-xs">Início</label>
+                <input type="text" name="inicio" value="<?= $aula['inicio_formatado'] ?>" maxlength="7" placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
             </div>
-            <div>
-                <label class="block text-sm text-gray-600">Término</label>
-                <input type="text" name="termino" value="<?= $aula['termino_formatado'] ?>" maxlength="7" placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
+            <div class="flex-1 min-w-25">
+                <label class="block text-gray-500 text-xs">Término</label>
+                <input type="text" name="termino" value="<?= $aula['termino_formatado'] ?>" maxlength="7" placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
             </div>
-            <div>
-                <label class="block text-sm text-gray-600">Data</label>
-                <input type="text" name="data" id="data" value="<?= $aula['data'] ?>" maxlength="10" placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
+            <div class="flex-1 min-w-25">
+                <label class="block text-gray-500 text-xs">Data</label>
+                <input type="text" name="data" id="data" value="<?= $aula['data'] ?>" maxlength="10" placeholder="formato 00:00hs" class="border border-gray-300 rounded-md px-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-300 focus:border-blue-500">
             </div>
         </div>
 
         <!-- MONITORES -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-wrap bg-gray-50 rounded-md gap-3 p-2">
             <datalist id="lista-monitor1">
-                <?php foreach ($this->monitores as $monitor): ?>
+                <?php foreach ($lista_monitores as $monitor): ?>
                     <option value="<?= $this->escapeHtml($monitor) ?>">
                     <?php endforeach; ?>
             </datalist>
-            <div>
-                <label class="block text-sm text-gray-700">Monitor 1</label>
-                <input type="text" name="monitor1" list="lista-monitor1" id="monitor1" maxlength="50" class="w-full&#x20;indent-1&#x20;border&#x20;rounded&#x20;border-gray-300&#x20;focus&#x3A;bg-gray-100&#x20;outline-none&#x20;focus&#x3A;border-blue-500" placeholder="Escolha um nome da lista ou digite o nome do novo monitor" value="<?= $aula['monitor1'] ?>">
+            <div class="flex-1 min-w-25">
+                <label class="block text-sm text-gray-700 w-full">
+                    Monitor 1
+                </label>
+                <input type="text" name="monitor1" list="lista-monitor1" id="monitor1" maxlength="50" class="w-full indent-1 border rounded border-gray-300 focus:bg-gray-100 outline-none focus:border-blue-500" placeholder="Escolha um nome da lista ou digite o nome do novo monitor" value="<?= $aula['monitor1'] ?>">
             </div>
             <datalist id="lista-monitor2">
-                <?php foreach ($this->monitores as $monitor): ?>
+                <?php foreach ($lista_monitores as $monitor): ?>
                     <option value="<?= $this->escapeHtml($monitor) ?>">
                     <?php endforeach; ?>
             </datalist>
-            <div>
-                <label class="block text-sm text-gray-700">Monitor 2</label>
-                <input type="text" name="monitor2" list="lista-monitor2" id="monitor2" maxlength="50" class="w-full&#x20;indent-1&#x20;border&#x20;rounded&#x20;border-gray-300&#x20;focus&#x3A;bg-gray-100&#x20;outline-none&#x20;focus&#x3A;border-blue-500" placeholder="Escolha um nome da lista ou digite o nome do novo monitor" value="<?= $aula['monitor2'] ?>">
+            <div class="flex-1 min-w-25">
+                <label class="block text-sm text-gray-700 w-full">Monitor 2</label>
+                <input type="text" name="monitor2" list="lista-monitor2" id="monitor2" maxlength="50" class="w-full indent-1 border rounded border-gray-300 focus:bg-gray-100 outline-none focus:border-blue-500" placeholder="Escolha um nome da lista ou digite o nome do novo monitor" value="<?= $aula['monitor2'] ?>">
             </div>
         </div>
 
@@ -70,7 +80,7 @@
                 <table class="w-full text-left">
                     <thead class="bg-blue-600 text-white text-base">
                         <tr>
-                            <th class="text-center font-normal">Presença</th>
+                            <th class="text-center font-normal whitespace-nowrap">Presença</th>
                             <th class="text-center font-normal">Nome do Atleta</th>
                         </tr>
                     </thead>
