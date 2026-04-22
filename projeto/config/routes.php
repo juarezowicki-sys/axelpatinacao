@@ -6,28 +6,8 @@ use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
 use Psr\Container\ContainerInterface;
 
-
-
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
 
-    /*
-    // 1. Exige APENAS que o usuário esteja logado (não checa RBAC)
-    $soLogin = function (string $handlerClass) {
-        return [
-            Mezzio\Authentication\AuthenticationMiddleware::class,
-            $handlerClass
-        ];
-    };
-
-    // 2. Exige Login + Permissão específica no RBAC (O que você já usa)
-    $restrito = function (string $handlerClass) {
-        return [
-            Mezzio\Authentication\AuthenticationMiddleware::class,
-            Mezzio\Authorization\AuthorizationMiddleware::class,
-            $handlerClass
-        ];
-    };
-*/
     $app->get('/ping', App\Handler\PingHandler::class, 'api.ping');
     $app->get('/', App\Handler\HomePageHandler::class, 'home.page');
     $app->route('/login', App\Handler\LoginHandler::class, ['GET', 'POST'], 'login');

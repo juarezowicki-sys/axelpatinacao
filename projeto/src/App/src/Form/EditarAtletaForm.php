@@ -54,7 +54,7 @@ class EditarAtletaForm extends Form implements InputFilterProviderInterface
             'name'       => 'nascimento',
             'type'       => Element\Text::class,
             'options'    => [
-                'label' => 'Data de nascimento do atleta* ',
+                'label' => 'Data de nascimento* ',
             ],
             'attributes' => [
                 'maxlength' => '10',

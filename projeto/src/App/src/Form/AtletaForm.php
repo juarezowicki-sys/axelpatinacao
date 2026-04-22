@@ -45,7 +45,7 @@ class AtletaForm extends Form implements InputFilterProviderInterface
                 'id'       => 'titular',
                 'onblur' => 'verificarResponsavel(this)',
                 'maxlength' => '100',
-                'class'  => 'w-full indent-1 border rounded border-gray-200 bg-gray-100 outline-none border-blue-500',
+                'class'  => 'w-full indent-1 border rounded border-gray-200 outline-none border-blue-500',
                 'placeholder' =>  'escolha um nome da lista',
             ]
         ]);

@@ -47,7 +47,6 @@ class ListarAtletasHandler implements RequestHandlerInterface
             $sql = new \Laminas\Db\Sql\Sql($this->adapter);
             $selectAtletas = $sql->select(['a' => 'atletas']);
             $selectAtletas->columns(['id', 'nome', 'patins', 'turma01', 'turma02', 'turma03', 'titular', 'nascimento', 'cadastro']);
-
             if ($role === 'monitor') {
                 // 1. Criamos a subquery apenas com a coluna necessária
                 $subSelectTurmas = $sql->select('turmas')

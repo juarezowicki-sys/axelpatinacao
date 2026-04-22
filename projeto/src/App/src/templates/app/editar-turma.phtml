@@ -1,1 +1,143 @@
-<?php $this->layout('layout::home-usuario'); ?> <?php $form = $this->form; ?> <?php $form->prepare(); ?> <div class="max-w-170 m-auto px-2 bg-white shadow-md rounded-lg mt-5"><div class="grid grid-cols-1 md:grid-cols-4 gap-2"> <?php if ($this->message): ?> <div class="min-w-full md:col-span-2"><span class="text-[#ce0808]"><?= $this->escapeHtml($this->message) ?></span></div> <?php endif; ?> <span class="text-2xl text-blue-600">Editar turma</span><div class="md:col-span-2"><a href="javascript:history.go(-1)" class="col-span-4 md:col-span-2 text-blue-700 text-base flex justify-center items-center"><span class="material-icons-regular text-lg">Arrow_Back</span>voltar</a></div></div> <?= $this->form()->openTag($form) ?> <input type="hidden" name="id" value="<?= $form->get('id')->getValue() ?>"><div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4"><div class="col-span-4 md:col-span-2"><span class="text-gray-500"><?= $this->formLabel($form->get('nome')) ?></span><br> <?= $this->formElement($form->get('nome')) ?> <span class="text-[#ce0808]"><?= $this->formElementErrors($form->get('nome')) ?></span></div><datalist id="lista-niveis"> <?php foreach ($this->niveis as $nivel): ?> <option value="<?= $this->escapeHtml($nivel) ?>"> <?php endforeach; ?> </option></datalist><div class="col-span-4 md:col-span-2"><span class="text-gray-500"><?= $this->formLabel($form->get('nivel')) ?></span><br> <?= $this->formElement($form->get('nivel')) ?> <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('nivel')) ?></span></div><datalist id="lista-locais"> <?php foreach ($this->locais as $local): ?> <option value="<?= $this->escapeHtml($local) ?>"> <?php endforeach; ?> </option></datalist><div class="col-span-4 md:col-span-2"><span class="text-gray-500"><?= $this->formLabel($form->get('local')) ?></span><br> <?= $this->formElement($form->get('local')) ?> <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('local')) ?></span></div><datalist id="lista-dias"> <?php foreach ($this->dias as $dia): ?> <option value="<?= $this->escapeHtml($dia) ?>"> <?php endforeach; ?> </option></datalist><div class="col-span-4 md:col-span-2"><span class="text-gray-500"><?= $this->formLabel($form->get('dia')) ?></span><br> <?= $this->formElement($form->get('dia')) ?> <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('dia')) ?></span></div><datalist id="lista-inicios"> <?php foreach ($this->inicios as $inicio): ?> <option value="<?= $this->escapeHtml($inicio) ?>"> <?php endforeach; ?> </option></datalist><div class="col-span-4 md:col-span-2"><span class="text-gray-500"><?= $this->formLabel($form->get('inicio')) ?></span><br> <?= $this->formElement($form->get('inicio')) ?> <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('inicio')) ?></span></div><datalist id="lista-terminos"> <?php foreach ($this->terminos as $termino): ?> <option value="<?= $this->escapeHtml($termino) ?>"> <?php endforeach; ?> </option></datalist><div class="col-span-4 md:col-span-2"><span class="text-gray-500"><?= $this->formLabel($form->get('termino')) ?></span><br> <?= $this->formElement($form->get('termino')) ?> <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('termino')) ?></span></div><datalist id="lista-monitores"> <?php foreach ($this->monitores as $monitor): ?> <option value="<?= $monitor ?>"> <?php endforeach; ?> </option></datalist><div class="col-span-4"><span class="text-gray-500"><?= $this->formLabel($form->get('monitor')) ?></span><br> <?= $this->formElement($form->get('monitor')) ?> <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('monitor')) ?></span></div><div class="col-span-4 md:col-span-2 pt-2"><a href="javascript:history.go(-1)" class="w-full"><div class="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400 px-2"><span>Cancelar e voltar</span></div></a></div><div class="col-span-4 md:col-span-2 mb-6 pt-0 md:pt-2"><button type="submit" id="btnEnviar" class="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400 px-2"><svg id="spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> <span id="textoBotao">Enviar alterações</span></button></div> <?= $this->form()->closeTag() ?> </div></div><script type="text/javascript" src="/js/editarTurma.js"></script>
+<?php $this->layout('layout::home-usuario'); ?>
+<?php $form = $this->form; ?>
+<?php $form->prepare(); ?>
+
+<div class="max-w-170 m-auto px-2 bg-white shadow-md rounded-lg mt-5 text-base">
+
+    <div class="grid grid-cols-4 gap-2">
+
+        <span class="col-span-2 text-xl text-blue-600">
+            Editar turma
+        </span>
+
+        <div class="col-span-4">
+            <a href="javascript:history.go(-1)" class=" text-blue-700 text-xs flex justify-center items-center">
+                <span class="material-icons-regular text-sm">
+                    Arrow_Back
+                </span>
+                voltar
+            </a>
+        </div>
+
+        <?php if ($this->message): ?>
+            <span class="flex items-center mt-2 mx-2 col-span-4">
+                <span class="h-px flex-1 bg-blue-400"></span>
+                <h2 class="m-4 mt-0 text-green-500"> <?= $this->escapeHtml($this->message) ?> </h2>
+                <span class="h-px flex-1 bg-blue-400"></span>
+            </span>
+        <?php endif; ?>
+
+    </div>
+
+    <?= $this->form()->openTag($form) ?>
+    <input type="hidden" name="id" value="<?= $form->get('id')->getValue() ?>">
+
+    <div class="flex flex-wrap bg-gray-50 rounded-md gap-3 p-3 space-y-4">
+
+        <div class="flex-1 min-w-25">
+            <span class="block text-gray-500 text-xs"><?= $this->formLabel($form->get('nome')) ?> </span>
+            <?= $this->formElement($form->get('nome')) ?>
+            <?= $this->formElementErrors($form->get('nome')) ?>
+        </div>
+
+        <datalist id="lista-niveis">
+            <?php foreach ($this->niveis as $nivel): ?>
+                <option value="<?= $this->escapeHtml($nivel) ?>">
+                <?php endforeach; ?>
+                </option>
+        </datalist>
+        <div class="flex-1 min-w-25">
+            <span class="block text-gray-500 text-xs">
+                <?= $this->formLabel($form->get('nivel')) ?>
+            </span>
+            <?= $this->formElement($form->get('nivel')) ?>
+            <?= $this->formElementErrors($form->get('nivel')) ?>
+        </div>
+
+        <datalist id="lista-locais">
+            <?php foreach ($this->locais as $local): ?>
+                <option value="<?= $this->escapeHtml($local) ?>">
+                <?php endforeach; ?>
+                </option>
+        </datalist>
+        <div class="flex-1 min-w-25">
+            <span class="block text-gray-500 text-xs">
+                <?= $this->formLabel($form->get('local')) ?>
+            </span>
+            <?= $this->formElement($form->get('local')) ?>
+            <?= $this->formElementErrors($form->get('local')) ?>
+        </div>
+
+        <datalist id="lista-dias">
+            <?php foreach ($this->dias as $dia): ?>
+                <option value="<?= $this->escapeHtml($dia) ?>"> <?php endforeach; ?></option>
+        </datalist>
+        <div class="flex-1 min-w-25"><span class="block text-gray-500 text-xs"><?= $this->formLabel($form->get('dia')) ?></span><?= $this->formElement($form->get('dia')) ?><?= $this->formElementErrors($form->get('dia')) ?></span></div>
+
+        <datalist id="lista-inicios">
+            <?php foreach ($this->inicios as $inicio): ?>
+                <option value="<?= $this->escapeHtml($inicio) ?>">
+                <?php endforeach; ?>
+                </option>
+        </datalist>
+        <div class="flex-1 min-w-25">
+            <span class="block text-gray-500 text-xs">
+                <?= $this->formLabel($form->get('inicio')) ?>
+            </span>
+            <?= $this->formElement($form->get('inicio')) ?>
+            <?= $this->formElementErrors($form->get('inicio')) ?>
+        </div>
+
+        <datalist id="lista-terminos">
+            <?php foreach ($this->terminos as $termino): ?>
+                <option value="<?= $this->escapeHtml($termino) ?>">
+                <?php endforeach; ?>
+                </option>
+        </datalist>
+        <div class="flex-1 min-w-25">
+            <span class="block text-gray-500 text-xs">
+                <?= $this->formLabel($form->get('termino')) ?>
+            </span>
+            <?= $this->formElement($form->get('termino')) ?>
+            <?= $this->formElementErrors($form->get('termino')) ?>
+        </div>
+
+        <datalist id="lista-monitores">
+            <?php foreach ($this->monitores as $monitor): ?>
+                <option value="<?= $monitor ?>">
+                <?php endforeach; ?>
+                </option>
+        </datalist>
+        <div class="flex-1 min-w-25">
+            <span class="block text-gray-500 text-xs">
+                <?= $this->formLabel($form->get('monitor')) ?>
+            </span>
+            <?= $this->formElement($form->get('monitor')) ?>
+            <?= $this->formElementErrors($form->get('monitor')) ?>
+        </div>
+
+         <div class="flex flex-wrap bg-gray-50 rounded-md gap-3 p-3 space-y-4 w-full text-base whitespace-nowrap">
+         <div class="flex-1 w-full">
+                <a href="javascript:history.go(-1)" class="w-full">
+                    <div class="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400 px-2">
+                        <span>
+                            Cancelar e voltar
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="flex-1 w-full">
+                <button type="submit" id="btnEnviar" class="w-full cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400 px-2">
+                    <svg id="spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span id="textoBotao">
+                        Enviar alterações
+                    </span>
+                </button>
+            </div>
+        </div>
+        <?= $this->form()->closeTag() ?>
+    </div>
+</div>

@@ -24,12 +24,12 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
             'name'       => 'nome',
             'type'       => Element\Text::class,
             'options'    => [
-                'label' => 'Nome completo / Razão social * ',
+                'label' => 'Nome / Razão social * ',
             ],
             'attributes' => [
                 'id'       => 'nome',
                 'maxlength' => '100',
-                'class'  => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class'  => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => 'Nome ou Razão Social completos',
             ],
         ]);
@@ -43,7 +43,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
                 'oninput' => 'mascaraDocumento(this)',
                 'maxlength' => '18',
                 'id'       => 'documento',
-                'class' => 'block w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class' => 'block w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => '000.000.000-00 ou 00.000.000/0000-00',
             ],
         ]);
@@ -58,7 +58,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
                 'onblur' => 'verificarTelefone(this)',
                 'oninput' => 'mascaraTelefone(this)',
                 'maxlength' => '15',
-                'class' => 'block w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class' => 'block w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => '(00) 90000-0000 ou (00) 0000-0000',
             ],
         ]);
@@ -71,7 +71,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id'       => 'email',
                 'onblur' => 'verificarEmail(this)',
-                'class' => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class' => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => 'Seu e-mail principal',
             ],
         ]);
@@ -86,7 +86,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
                 'oninput' => 'mascaraCEP(this)',
                 'maxlength' => '9',
                 'onblur' => 'verificarCep(this)',
-                'class' => 'bg-gray-50 block shadow-sm w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class' => 'bg-gray-50 block shadow-sm w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => '00000-000 tipo autocomplete',
             ],
         ]);
@@ -99,7 +99,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id'   => 'uf',
                 'maxlength' => '2',
-                'class'  => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class'  => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => 'Sigla do seu Estado - ex.: RS',
             ],
         ]);
@@ -112,7 +112,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id'       => 'localidade',
                 'maxlength' => '100',
-                'class'  => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class'  => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => 'ex.: Sapucaia do Sul',
             ],
         ]);
@@ -126,7 +126,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id'       => 'bairro',
                 'maxlength' => '100',
-                'class'  => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class'  => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => 'Nome do seu bairro',
             ],
         ]);
@@ -140,7 +140,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id'       => 'logradouro',
                 'maxlength' => '100',
-                'class' => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class' => 'bg-gray-50 w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => 'Rua Av estrada etc.',
             ],
         ]);
@@ -155,7 +155,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
                 'id'       => 'complementos',
                 'onblur' => 'verificarComplementos(this)',
                 'maxlength' => '100',
-                'class' => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class' => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => 'número do prédio, bloco, ap, sala, lote, etc.',
             ],
         ]);
@@ -168,7 +168,7 @@ class EditarUsuarioForm extends Form implements InputFilterProviderInterface
             'attributes' => [
                 'id'       => 'role',
                 'maxlength' => '8',
-                'class'  => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500',
+                'class'  => 'w-full indent-1 border rounded border-gray-200 focus:bg-gray-100 outline-none focus:border-blue-500 text-base',
                 'placeholder' => "'titular', 'monitor' ou 'admin'",
             ],
         ]);
