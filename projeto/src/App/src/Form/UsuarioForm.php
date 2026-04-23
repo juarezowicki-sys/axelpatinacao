@@ -24,7 +24,7 @@ class UsuarioForm extends Form implements InputFilterProviderInterface
             'name'       => 'nome',
             'type'       => Element\Text::class,
             'options'    => [
-                'label' => 'Nome completo / Razão social * ',
+                'label' => 'Nome / Razão social * ',
             ],
             'attributes' => [
                 'id'       => 'nome',
