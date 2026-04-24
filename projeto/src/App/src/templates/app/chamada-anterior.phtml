@@ -1,9 +1,0 @@
- 
-                            <td class="p-2 md:p-3 text-center md:table-cell border-t md:border-none pt-3 md:pt-3"> <?php if (!empty($telefoneLimpo)): ?> <a href="https://wa.me/<?= $telefoneLimpo ?>?text=Olá, estamos iniciando o treino de patinação com <?= $nomeAtleta ?> presente!" target="_blank" class="flex items-center justify-center gap-2 hover:bg-green-300 px-4 py-2 md:px-2 md:py-1 rounded-md transition-all text-xs text-gray-600 shadow-sm"><img src="/img/whats.png" title="WhatsApp do responsável pelo atleta" alt="logo do whatsApp"> <span>WhatsApp do responsável: <?= $this->escapeHtml($atleta['titular']) ?></span></a> <?php else: ?> <span class="text-gray-400 italic text-xs">Sem número</span> <?php endif; ?> </td>
-                        </tr> <?php endforeach; ?> </tbody>
-            </table>
-        </div>
-        <div><label class="block text-base text-gray-600 mb-1">Notas da Aula</label> <textarea name="nota" rows="3" class="w-full p-2 border border-gray-300 rounded-md field-sizing-content" placeholder="Ex: Aluno X machucou o joelho, avisar responsáveis..."></textarea></div>
-        <div class="flex justify-end space-x-4"><a href="/turmas" class="px-6 py-2 border rounded text-gray-600 hover:bg-gray-100">Cancelar</a> <button type="submit" class="cursor-pointer px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 shadow-md">Salvar Chamada</button></div>
-    </form>
-</div>

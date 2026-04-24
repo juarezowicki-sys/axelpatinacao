@@ -82,6 +82,7 @@ final class AtletaHandler implements RequestHandlerInterface
         if ($role[0] === 'titular') {
             $element04->setValue($nome);
             $element04->setAttribute('readonly', true);
+            $element04->setAttribute('placeholder', 'o seu nome');
         } elseif ($role[0] === 'admin' || $role[0] === 'monitor') {
             $sql = new \Laminas\Db\Sql\Sql($this->adapter);
             $select = $sql->select('usuarios');

@@ -17,7 +17,7 @@
 
 <body class="flex flex-col min-h-screen text-[#161616] text-justify hyphens-auto max-w-full box-border no-underline p-[0.1vw_0] m-0 leading-inherit roboto overflow-y-scroll" id="escola-dedicada-a-formacao-esportiva-artistica-e-humana-por-meio-da-patinacao">
 
-  <header class="flex items-center w-full max-w-337 bg-blue-100 z-50">
+  <header class="fixed flex items-center w-full max-w-337 bg-blue-100 z-50">
     <div class="max-w-35 py-1">
       <a href="/">
         <img src="/img/logo.png" alt="exibe o logo da Axel Patinação" loading="lazy" class="max-w-35 h-auto min-w-25">
@@ -36,13 +36,27 @@
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-31 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Breastfeeding</span>Cadastro</li>
             </a> <?php endif; ?> <?php if ($this->user_role && ($this->user_role === 'admin' || $this->user_role === 'monitor') && $path !== '/nova_turma'): ?> <a href="/nova_turma" title="Criar uma nova turma">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-26 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Nova turma</li>
-            </a> <?php endif; ?> <?php if (isset($this->user_role) && $this->user_role === 'admin' && $path !== '/novo_atleta'): ?> <a href="/novo_atleta" title="Registrar um atleta">
+            </a> <?php endif; ?>
+
+          <?php if (isset($this->user_role) && ($this->user_role === 'admin' || $this->user_role === 'titular') && $path !== '/novo_atleta'): ?> <a href="/novo_atleta" title="Registrar um atleta">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-27 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">face</span> Novo Atleta</li>
-            </a> <?php endif; ?> <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $path !== '/atletas'): ?> <a href="/atletas" title="Listar os atletas">
+            </a> <?php endif; ?>
+
+          <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $path !== '/atletas'): ?> <a href="/atletas" title="Listar os atletas">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-20 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">face</span> Atletas</li>
-            </a> <?php endif; ?> <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $this->user_role !== 'titular' && $path !== '/aulas'): ?> <a href="/aulas" title="Listar as aulas anteriores">
+            </a> <?php endif; ?> 
+            
+                        <?php if (isset($this->user_role) && $this->user_role === 'titular' && $path === '/usuario'): ?>
+              <a href="https://axelpatinacao.basedeclientes.com.br" target="_blank" title="Área financeira da Axel">
+                <li class="rounded-md hover:bg-slate-200 indent-0.5 w-26 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Attach_Money</span> Financeiro</li>
+              </a>
+            <?php endif; ?>
+            
+            
+            <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $this->user_role !== 'titular' && $path !== '/aulas'): ?> <a href="/aulas" title="Listar as aulas anteriores">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-20 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Aulas</li>
-            </a> <?php endif; ?> <?php if ((isset($this->user_role) && ($this->user_role === 'admin' || $this->user_role === 'monitor')) && $path !== '/turmas'): ?> <a href="/turmas" title="Listar todas as turmas">
+            </a> <?php endif; ?> 
+            <?php if ((isset($this->user_role) && ($this->user_role === 'admin' || $this->user_role === 'monitor')) && $path !== '/turmas'): ?> <a href="/turmas" title="Listar todas as turmas">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-20 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Turmas</li>
             </a> <?php endif; ?> <?php if ($this->user_role && $this->user_role === 'admin' && $path !== '/usuarios'): ?> <a href="/usuarios" title="Listar os usuários">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-17 flex float:left items-center font-semi-bold"><span class="material-icons-regular text-[19px] text-[#a15959]">Breastfeeding</span> Users</li>
@@ -82,9 +96,18 @@
                 <li class="rounded-md hover:bg-slate-200 indent-0.5 w-40 pt-0 flex float:left items-center font-semi-bold"><span class="material-icons-regular text-[19px] text-[#a15959]">Breastfeeding</span> Listar usuários</li>
               </a> <?php endif; ?> <?php if (isset($this->user_role) && ($this->user_role === 'admin' || $this->user_role === 'titular') && $path !== '/novo_atleta'): ?> <a href="/novo_atleta" title="Registrar um atleta">
                 <li class="rounded-md hover:bg-slate-200 indent-0.5 w-40 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">face</span>Novo atleta</li>
-              </a> <?php endif; ?> <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $path !== '/atletas'): ?> <a href="/atletas">
+              </a> <?php endif; ?>
+
+            <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $path !== '/atletas'): ?> <a href="/atletas">
                 <li class="rounded-md hover:bg-slate-200 indent-0.5 w-40 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">face</span> Listar atletas</li>
-              </a> <?php endif; ?> <?php if ($this->user_role && ($this->user_role === 'admin' || $this->user_role === 'monitor') && $path !== '/nova_turma'): ?> <a href="/nova_turma" title="Criar uma turma nova">
+              </a> <?php endif; ?>
+
+            <?php if (isset($this->user_role) && $this->user_role === 'titular' && $path === '/usuario'): ?>
+              <a href="https://axelpatinacao.basedeclientes.com.br" target="_blank" title="Área financeira da Axel">
+                <li class="rounded-md hover:bg-slate-200 indent-0.5 w-40 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Attach_Money</span> Financeiro</li>
+              </a>
+            <?php endif; ?>
+            <?php if ($this->user_role && ($this->user_role === 'admin' || $this->user_role === 'monitor') && $path !== '/nova_turma'): ?> <a href="/nova_turma" title="Criar uma turma nova">
                 <li class="rounded-md hover:bg-slate-200 indent-0.5 w-35 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span>Nova turma</li>
               </a> <?php endif; ?> <?php if ((isset($this->user_role) && ($this->user_role === 'admin' || $this->user_role === 'monitor')) && $path !== '/turmas'): ?> <a href="/turmas">
                 <li class="rounded-md hover:bg-slate-200 indent-0.5 w-40 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Listar turmas</li>
@@ -137,7 +160,9 @@
 
     // Seleciona todos os inputs que possuem um datalist associado
     document.querySelectorAll('input[list]').forEach(el => {
-
+      if (page === 'atleta.phtml') { // 'const page = 'atleta.phtml';' está na pag. atleta.phtml
+        return;
+      };
       // Quando o usuário clica ou foca no campo
       el.addEventListener('focus', function() {
         this.oldValue = this.value; // Salva o valor atual (ex: "iniciante01")
@@ -151,8 +176,7 @@
           this.value = this.oldValue;
         }
       });
-
-      // Opcional: Se ele escolher uma opção da lista, o 'blur' mantém a nova escolha
+      // Opcional: "Se ele escolher uma opção da lista, o 'blur' mantém a nova escolha";
     });
   </script>
 </body>

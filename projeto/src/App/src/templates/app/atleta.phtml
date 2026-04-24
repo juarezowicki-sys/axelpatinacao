@@ -3,9 +3,9 @@
 <?php $form->prepare(); ?>
 <?= $this->form()->openTag($form) ?>
 
-<div class="max-w-170 m-auto p-1 bg-white shadow-md rounded-lg mt-3 md:mt-12 mb-1">
+<div class="max-w-200 m-auto p-1 bg-white shadow-md rounded-lg mt-18 mb-1">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
-        <h1 class="col-span-4 md:col-span-2 whitespace-nowrap text-2xl mb-4 text-blue-700">
+        <h1 class="col-span-4 md:col-span-2 whitespace-nowrap text-2xl mb-2 text-blue-700">
             Cadastrar o atleta
         </h1>
 
@@ -48,25 +48,25 @@
             <p id="erro-nascimentoVazio" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe a data de nascimento do atleta</p>
             <span class="text-[#ce0808]"><?= $this->formElementErrors($form->get('nascimento')) ?></span>
         </div>
-        <div class="flex-1 w-full min-w-50">
+        <div class="flex-1 w-full min-w-full">
             <span class="block text-gray-600 text-sm"><?= $this->formLabel($form->get('patins')) ?></span>
             <?= $this->formElement($form->get('patins')) ?>
             <p id="erro-patins" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe o número dos seus patins</p>
             <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('patins')) ?></span>
         </div>
-        <div class="flex-1 w-full min-w-50">
+        <div class="flex-1 w-full  min-w-full">
             <span class="block text-gray-600 text-sm"><?= $this->formLabel($form->get('turma01')) ?></span>
             <?= $this->formElement($form->get('turma01')) ?>
             <p id="erro-turma01" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe a turma do atleta</p>
             <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('turma01')) ?></span>
         </div>
-        <div class="flex-1 w-full min-w-50">
+        <div class="flex-1 w-full  min-w-full">
             <span class="block text-gray-600 text-sm"><?= $this->formLabel($form->get('turma02')) ?></span>
             <?= $this->formElement($form->get('turma02')) ?>
             <p id="erro-turma02" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe a segunda turma do atleta</p>
             <span class="text-[#ce0808]"> <?= $this->formElementErrors($form->get('turma02')) ?></span>
         </div>
-        <div class="flex-1 w-full min-w-50">
+        <div class="flex-1 w-full  min-w-full">
             <span class="block text-gray-600 text-sm"><?= $this->formLabel($form->get('turma03')) ?></span>
             <?= $this->formElement($form->get('turma03')) ?>
             <p id="erro-turma03" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe a terceira turma do atleta</p>
@@ -95,4 +95,7 @@
 
 <?= $this->form()->closeTag() ?>
 
+<script>
+    const page = 'atleta.phtml'; // para o script 'document.querySelectorAll('input[list]').forEach(el => {' da pag. home-usuario.phtml
+</script>
 <script type="text/javascript" src="/js/atleta.js"></script>

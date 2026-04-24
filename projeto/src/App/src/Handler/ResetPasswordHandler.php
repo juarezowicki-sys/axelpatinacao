@@ -26,7 +26,7 @@ class ResetPasswordHandler implements RequestHandlerInterface
         private AdapterInterface $db,
         private AdapterInterface $adapter,
         private RouterInterface $router
-    )  {
+    ) {
         $this->router   = $router;
     }
 
@@ -101,10 +101,14 @@ class ResetPasswordHandler implements RequestHandlerInterface
             $flashMessages = $request->getAttribute(FlashMessageMiddleware::FLASH_ATTRIBUTE);
             // 2. Criar uma flash message (chave, valor)
             $username = $userData['nome'];
+            $partes = explode(' ', $username);
+            $primeiroNome = array_shift($partes);
+          //  $ultimoNome = array_pop($partes);
             $flashMessages->flash(
                 'sucesso',
-                'Senha alterada! Olá, ' . $username . ' ! Sua senha foi alterada conforme solicitado, e ela já está valendo. Você está logado no sistema. Nas próximas visitas ao nosso site, utilize a nova senha.',
-                1);
+                'Senha alterada! Olá, ' . $primeiroNome . '! Sua senha foi alterada conforme solicitado, e ela já está valendo. Você está logado no sistema. Nas próximas visitas ao nosso site, utilize a nova senha.',
+                1
+            );
             return new RedirectResponse($this->router->generateUri('home.usuario'));
         }
 
