@@ -2,27 +2,32 @@
 <?php $form = $this->form; ?>
 <?php $form->prepare(); ?>
 
+<?php $partes = explode(' ', $this->form->get('nome')->getValue());
+$primeiroNome = array_shift($partes);
+$ultimoNome = array_pop($partes);
+$nome_usuario = $primeiroNome . ' ' . $ultimoNome;
+?>
 <?= $this->form()->openTag($form) ?>
 
-<div class="max-w-full m-auto p-2 bg-white shadow-md rounded-lg mt-18 mb-4">
+<div class="max-w-200 m-auto p-2 bg-white shadow-md rounded-lg mt-18 mb-4">
 
-    <div class="grid md:grid-cols-4 gap-4 md:gap-6 text-base mb-4">
+    <div class="grid md:grid-cols-4 gap-4 md:gap-6 mb-4">
         <div class="text-[clamp(1rem,4vw,1.4rem)] md:col-span-2">
             <?php if ($this->message): ?>
                 <span class="text-[#ce0808]">
                     <?= $this->escapeHtml($this->message) ?>
                 </span>
             <?php endif; ?>
-            <span class="text-2xl text-blue-600 mt-5">
+            <span class="text-xl text-blue-600 mt-5 ml-2">
                 Editar cadastro - Atleta: 
             </span>
             <span class="text-xl text-blue-600">
-                <?= $this->form->get('nome')->getValue() ?>
-            </span><br>
+                <?= $nome_usuario ?>
+            </span>
         </div>
-        <div class="md:col-span-2 w-full">
-            <a href="javascript:history.go(-1)" class="col-span-4 md:col-span-2 text-blue-700 text-base flex justify-center items-center">
-                <span class="material-icons-regular text-lg">
+        <div class="md:col-span-2 w-full md:mt-8">
+            <a href="javascript:history.go(-1)" class="col-span-4 md:col-span-2 text-blue-500 text-sm flex justify-center items-center">
+                <span class="material-icons-regular">
                     Arrow_Back
                 </span>
                 voltar
@@ -30,10 +35,10 @@
         </div>
     </div>
 
-    <div class="flex flex-wrap bg-gray-50 rounded-md gap-3 p-3 space-y-4 text-base">
+    <div class="flex flex-wrap rounded-md gap-3 p-3 space-y-4 text-md text-gray-600">
         <div class="flex-1 w-full min-w-50">
             <span class="block text-gray-400"><?= $this->formLabel($form->get('nome')) ?></span>
-            <?= $this->formElement($form->get('nome')) ?>
+           <span class="block whitespace-nowrap"> <?= $this->formElement($form->get('nome')) ?></span>
             <p id="erro-nome" class="hidden mt-1 text-xs text-red-600 font-semibold">⚠️ informe o nome do atleta</p>
             <span class="text-[#ce0808]"><?= $this->formElementErrors($form->get('nome')) ?></span>
         </div>
@@ -81,13 +86,13 @@
     <div class="flex flex-wrap bg-gray-50 rounded-md gap-3 p-3 space-y-3">
         <div class="flex-1 w-full min-w-50">
             <a href="javascript:history.go(-1)" class="w-full">
-                <div class="p-0.5 cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400">
+                <div class="p-0.3 cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400">
                     <span>Cancelar e voltar</span>
                 </div>
             </a>
         </div>
-        <div class="flex-1 w-full min-w-50">
-            <button type="submit" id="btnEnviar" class="p-1 cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400"><svg id="spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24">
+        <div class="flex-1 w-full min-w-50 p-0.5">
+            <button type="submit" id="btnEnviar" class="cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md transition flex items-center justify-center disabled:bg-blue-400"><svg id="spinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg> <span id="textoBotao">Enviar alterações</span>

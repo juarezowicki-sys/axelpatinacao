@@ -30,9 +30,12 @@
             <li class="rounded-md hover:bg-slate-200 indent-0.5 w-10 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">home</span></li>
           </a> <?php if ((!isset($this->user_role) || $this->user_role === 'guest') && $path !== '/login'): ?> <a href="/login" title="Execute seu login na Axel">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-40 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Key</span> Login / entrar</li>
-            </a> <?php endif; ?> <?php if ((!isset($this->user_role) || $this->user_role === 'guest') && $path !== '/minha_senha'): ?> <a href="/minha_senha" title="Solicite uma nova senha">
+            </a> 
+            <?php endif; ?> 
+            <?php if ((!isset($this->user_role) || $this->user_role === 'guest') && $path !== '/minha_senha'): ?> <a href="/minha_senha" title="Solicite uma nova senha">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-32 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Key</span> Minha senha</li>
-            </a> <?php endif; ?> <?php if ((!isset($this->user_role) || $this->user_role === 'guest'  || $this->user_role === 'admin') && $path !== '/novo_usuario'): ?> <a href="/novo_usuario" title="Criar seu usuário">
+            </a> <?php endif; ?> 
+            <?php if ((!isset($this->user_role) || $this->user_role === 'guest'  || $this->user_role === 'admin') && $path !== '/novo_usuario'): ?> <a href="/novo_usuario" title="Criar seu usuário">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-31 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Breastfeeding</span>Cadastro</li>
             </a> <?php endif; ?> <?php if ($this->user_role && ($this->user_role === 'admin' || $this->user_role === 'monitor') && $path !== '/nova_turma'): ?> <a href="/nova_turma" title="Criar uma nova turma">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-26 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Nova turma</li>
