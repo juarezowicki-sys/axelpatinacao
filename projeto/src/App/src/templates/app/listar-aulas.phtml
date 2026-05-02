@@ -37,7 +37,7 @@ endif; ?>
 ?>
     <span class="flex items-center mt-6 mx-12">
         <span class="h-px flex-1 bg-blue-400"></span>
-        <h2 class="px-4 text-blue-700">Nenhuma aula cadastrada  <?= $consulta ?></h2>
+        <h2 class="px-4 text-blue-700">Nenhuma aula cadastrada <?= $consulta ?></h2>
         <span class="h-px flex-1 bg-blue-400"></span>
     </span>
 
@@ -117,15 +117,16 @@ endif; ?>
     </div>
 <?php endif; ?>
 <?php if ($this->role === 'admin' || $this->role === 'monitor') : ?>
-    <div class="p-1 pb-1 md:flex md:w-full rounded-lg pt-6">
-        <form method="GET" class="flex flex-wrap">
-         <?php if (isset($atleta)): ?> <input type="hidden" name="atleta" value="<?= $atleta ?>"> <?php endif; ?>
-           <?php if (isset($tipoConsulta)): ?> <input type="hidden" name="chama" value="<?= $tipoConsulta ?>"> <?php endif; ?>
-            <div class="flex min-w-70 p-3 items-center gap-3 justify-left">
-                <label class="block text-sm text-gray-700 mb-1">
+    <div class="md:flex md:w-full rounded-lg gap-6 pt-4">
+        <form method="GET" class="flex items-center">
+            <?php if (isset($atleta)): ?> <input type="hidden" name="atleta" value="<?= $atleta ?>"> <?php endif; ?>
+            <?php if (isset($tipoConsulta)): ?> <input type="hidden" name="chama" value="<?= $tipoConsulta ?>"> <?php endif; ?>
+
+            <div class="flex flex-wrap p-3 items-baseline">
+                <label class="flex flex-1 text-base whitespace-nowrap text-gray-700 mb-1">
                     Navegar mensal
                 </label>
-                <select name="mes" onchange="this.form.submit()" class="w-35 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm p-1 border">
+                <select name="mes" onchange="this.form.submit()" class="flex flex-1 ml-4 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm p-0.5 border">
                     <option value="<?= $this->mesatual ?> ?>" selected="selected">
                         selecione o mês
                     </option>
@@ -136,9 +137,9 @@ endif; ?>
                 </select>
             </div>
         </form>
-        <form method="GET" class="flex flex-wrap items-end gap-4">
-            <div class="flex min-w-80 pl-3 items-center"><label class="text-sm text-gray-700 mb-1 w-32">Data Específica</label>
-                <div class="flex gap-2"><input type="date" onchange="this.form.submit()" name="data_especifica" value="<?= $dataBusca ?>" class="w-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border"></div>
-            </div>
+        <form method="GET" class="flex items-baseline p-3">
+            <label class="text-base text-gray-700 mb-1 mr-4 whitespace-nowrap">Data Específica</label>
+            <input type="date" onchange="this.form.submit()" name="data_especifica" value="<?= $dataBusca ?>" class="w-5 h-7 focus:ring-blue-500 focus:border-blue-500">
         </form>
+
     </div> <?php endif; ?>

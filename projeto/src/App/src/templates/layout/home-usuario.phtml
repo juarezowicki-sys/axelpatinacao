@@ -13,11 +13,21 @@
   <title>AXEL Patinação Artística</title>
   <link rel="preload" href="/css/output.css" as="style">
   <link rel="stylesheet" href="/css/output.css" media="print" onload="this.media='all'">
+
+  <style>
+      body {
+      background-color: #f9f9f9;
+      background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #f0f0f7 1px, transparent 1px);
+      background-size: 1.5px 1.5px; /* Tamanho do padrão */
+      opacity: 100; /* Diminui ainda mais a visibilidade */
+    }
+  </style>
+
 </head>
 
 <body class="flex flex-col min-h-screen text-[#161616] text-justify hyphens-auto max-w-full box-border no-underline p-[0.1vw_0] m-0 leading-inherit roboto overflow-y-scroll" id="escola-dedicada-a-formacao-esportiva-artistica-e-humana-por-meio-da-patinacao">
 
-  <header class="fixed flex items-center w-full max-w-337 bg-blue-100 z-50">
+  <header class="fixed flex items-center w-full max-w-337 bg-blue-100 z-500">
     <div class="max-w-35 py-1">
       <a href="/">
         <img src="/img/logo.png" alt="exibe o logo da Axel Patinação" loading="lazy" class="max-w-35 h-auto min-w-25">
@@ -26,16 +36,21 @@
 
     <div class="whitespace-nowrap w-full max-w-full items-center justify-end hidden md:flex md:order-1 pr-10">
       <nav class="flex justify-end items-center bg-neutral-primary w-full max-w-full z-10 mt-0 inset-s-0">
-        <ul class="text-[14px] flex flex-col justify-end rounded-base bg-neutral-secondary-soft md:flex-row md:bg-neutral-primary max-w-full text-right gap-2"> <?php $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);  ?> <a href="/" title="Blog - Página inicial">
-            <li class="rounded-md hover:bg-slate-200 indent-0.5 w-10 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">home</span></li>
-          </a> <?php if ((!isset($this->user_role) || $this->user_role === 'guest') && $path !== '/login'): ?> <a href="/login" title="Execute seu login na Axel">
+        <ul class="text-[14px] flex flex-col justify-end rounded-base bg-neutral-secondary-soft md:flex-row md:bg-neutral-primary max-w-full text-right gap-2"> 
+          <?php $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);  ?> 
+          <a href="/" title="Blog - Página inicial">
+            <li class="rounded-md hover:bg-slate-200 indent-0.5 w-10 flex float:left items-center">
+              <span class="material-icons-regular text-[19px] text-[#a15959]">home</span>
+            </li>
+          </a> 
+          <?php if ((!isset($this->user_role) || $this->user_role === 'guest') && $path !== '/login'): ?> <a href="/login" title="Execute seu login na Axel">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-40 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Key</span> Login / entrar</li>
-            </a> 
-            <?php endif; ?> 
-            <?php if ((!isset($this->user_role) || $this->user_role === 'guest') && $path !== '/minha_senha'): ?> <a href="/minha_senha" title="Solicite uma nova senha">
+            </a>
+          <?php endif; ?>
+          <?php if ((!isset($this->user_role) || $this->user_role === 'guest') && $path !== '/minha_senha'): ?> <a href="/minha_senha" title="Solicite uma nova senha">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-32 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Key</span> Minha senha</li>
-            </a> <?php endif; ?> 
-            <?php if ((!isset($this->user_role) || $this->user_role === 'guest'  || $this->user_role === 'admin') && $path !== '/novo_usuario'): ?> <a href="/novo_usuario" title="Criar seu usuário">
+            </a> <?php endif; ?>
+          <?php if ((!isset($this->user_role) || $this->user_role === 'guest'  || $this->user_role === 'admin') && $path !== '/novo_usuario'): ?> <a href="/novo_usuario" title="Criar seu usuário">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-31 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Breastfeeding</span>Cadastro</li>
             </a> <?php endif; ?> <?php if ($this->user_role && ($this->user_role === 'admin' || $this->user_role === 'monitor') && $path !== '/nova_turma'): ?> <a href="/nova_turma" title="Criar uma nova turma">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-26 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Nova turma</li>
@@ -47,19 +62,19 @@
 
           <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $path !== '/atletas'): ?> <a href="/atletas" title="Listar os atletas">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-20 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">face</span> Atletas</li>
-            </a> <?php endif; ?> 
-            
-                        <?php if (isset($this->user_role) && $this->user_role === 'titular' && $path === '/usuario'): ?>
-              <a href="https://axelpatinacao.basedeclientes.com.br" target="_blank" title="Área financeira da Axel">
-                <li class="rounded-md hover:bg-slate-200 indent-0.5 w-26 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Attach_Money</span> Financeiro</li>
-              </a>
-            <?php endif; ?>
-            
-            
-            <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $this->user_role !== 'titular' && $path !== '/aulas'): ?> <a href="/aulas" title="Listar as aulas anteriores">
+            </a> <?php endif; ?>
+
+          <?php if (isset($this->user_role) && $this->user_role === 'titular' && $path === '/usuario'): ?>
+            <a href="https://axelpatinacao.basedeclientes.com.br" target="_blank" title="Área financeira da Axel">
+              <li class="rounded-md hover:bg-slate-200 indent-0.5 w-26 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Attach_Money</span> Financeiro</li>
+            </a>
+          <?php endif; ?>
+
+
+          <?php if (isset($this->user_role) && $this->user_role !== 'guest' && $this->user_role !== 'usuario' && $this->user_role !== 'titular' && $path !== '/aulas'): ?> <a href="/aulas" title="Listar as aulas anteriores">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-20 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Aulas</li>
-            </a> <?php endif; ?> 
-            <?php if ((isset($this->user_role) && ($this->user_role === 'admin' || $this->user_role === 'monitor')) && $path !== '/turmas'): ?> <a href="/turmas" title="Listar todas as turmas">
+            </a> <?php endif; ?>
+          <?php if ((isset($this->user_role) && ($this->user_role === 'admin' || $this->user_role === 'monitor')) && $path !== '/turmas'): ?> <a href="/turmas" title="Listar todas as turmas">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-20 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span> Turmas</li>
             </a> <?php endif; ?> <?php if ($this->user_role && $this->user_role === 'admin' && $path !== '/usuarios'): ?> <a href="/usuarios" title="Listar os usuários">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-17 flex float:left items-center font-semi-bold"><span class="material-icons-regular text-[19px] text-[#a15959]">Breastfeeding</span> Users</li>
@@ -67,10 +82,11 @@
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-7 flex float:left items-center font-semi-bold"><span class="material-icons-regular text-[19px] text-[#a15959]">Door_Open</span></li>
             </a> <?php endif; ?> <?php if (($this->user_role && $this->user_role !== 'guest') && $path !== '/usuario'): ?> <a href="/usuario" title="<?php echo $this->user_name ?>">
               <li class="rounded-md hover:bg-slate-200 indent-0.5 w-15 flex float:left items-center"><span class="material-icons-regular text-[19px] text-[#a15959]">Manage_Accounts</span></li>
-            </a> <?php endif; ?> </ul>
+            </a> <?php endif; ?>
+        </ul>
       </nav>
     </div>
-    <div id="containerMenu" class="fixed block top-4 right-9 z-50">
+    <div id="containerMenu" class="fixed block top-4 right-10 z-50">
       <label class="w-8 h-8 cursor-pointer flex flex-col items-center justify-center rounded-md bg-white shadow-md absolute">
         <input id="botaoMenu" class="hidden peer" type="checkbox">
         <div class="w-5 h-0.5 bg-black mb-1 transition-all duration-300 peer-checked:rotate-45 peer-checked:translate-y-1.5"></div>
